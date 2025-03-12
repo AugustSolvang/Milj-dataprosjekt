@@ -1,1 +1,1 @@
-Describes the notebooks directory
+Vi benytter oss av åpne miljødata fra API-er som openweathermap og api.met
