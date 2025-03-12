@@ -1,4 +1,33 @@
-API_key_August = "59d7ea78fc61d215e0cac9489473dd53"
-API_Key_Name = "API_key_August"
+import requests
+import os
+from dotenv import load_dotenv
 
-API_key_Mani = "7277c216dfc891da863f4b4b96356c9e"
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the environment variables
+api_key = os.getenv('API_KEY')
+database_url = os.getenv('DATABASE_URL')
+
+city = 'Oslo'
+
+api_key = os.getenv('API_KEY')
+url = os.getenv('DATABASE_URL')
+
+url +=f"?q={city}&appid={api_key}&units=metric"
+
+res = requests.get(url)
+data = res.json()
+
+humidity = data['main']['humidity']
+pressure = data['main']['pressure']
+wind = data['wind']['speed']
+description = data['weather'][0]['description']
+temp = data['main']['temp']
+
+print('Temperature:',temp,'°C')
+print('Wind:',wind)
+print('Pressure: ',pressure)
+print('Humidity: ',humidity)
+print('Description:',description)
+
