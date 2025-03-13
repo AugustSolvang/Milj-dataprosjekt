@@ -15,7 +15,7 @@ def fetch_weather_data(lat, lon):
     if response.status_code == 200:
         return response.json()  # Returnerer JSON-data
     else:
-        print(f"Feil: {response.status_code}")
+        print(f"Fail: {response.status_code}")
         return None
 
 # Testkall
