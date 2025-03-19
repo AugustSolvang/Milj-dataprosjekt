@@ -1,34 +1,18 @@
 import requests
-import json
+from requests.auth import HTTPBasicAuth  
 
 api_key = "2e53c5fc-1cab-435f-bf3d-5b1cd9352d86"
-url_base = "https://frost.met.no/api/v0/"
-url_endpoint = "timeseries"  # Riktig endepunkt for værdata
-url = f"{url_base}{url_endpoint}"
-
-headers = {
-    "Authorization": f"Bearer {api_key}"
-}
+url = "https://frost.met.no/api/v1/sources"
 
 params = {
-    "station": "Oslo",  # Sjekk at stasjonen er riktig
-    "start_date": "2020-01-01",
-    "end_date": "2020-12-31"
+    "types": "SensorSystem",
+    "geometry": "nearest(10,59.91,10.75)"
 }
 
-response = requests.get(url, headers=headers, params=params)
+# Bruk Basic Auth (API-nøkkel som brukernavn, tomt passord)
+response = requests.get(url, auth=HTTPBasicAuth(api_key, ""), params=params)
 
-print(f"Status Code: {response.status_code}")  # Sjekk statuskoden
 if response.status_code == 200:
-    try:
-        data = response.json()
-        with open('Weather_Data_MET.json', 'a') as json_file:
-            json.dump(data, json_file, indent=4)
-    except json.JSONDecodeError as e:
-        print(f"JSON decode error: {e}")
+    print(response.json())  # ✅ Skriver ut tilgjengelige stasjoner
 else:
-    print(f"Error: {response.status_code}")
-    print(f"Response: {response.text}")  # Skriver ut feilmeldingen fra serveren
-
-
-
+    print(f"Feil: {response.status_code}, {response.text}")

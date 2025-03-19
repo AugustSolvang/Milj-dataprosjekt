@@ -1,7 +1,7 @@
 import requests
-import json
+import pandas as pd
 
-api_key = "2e53c5fc-1cab-435f-bf3d-5b1cd9352d86"
+api_key = "f6ece757-0cb9-40c7-87cf-7817a5e6bb70"
 url = "https://frost.met.no/observations/v0.jsonld"
 
 headers = {
@@ -9,9 +9,9 @@ headers = {
 }
 
 params = {
-    "station": "Oslo",
-    "start": "2020-01-01",
-    "end": "2020-12-31"
+    "sources": "SN18700",
+    "referencetime": "-02-01/2017-02-01",
+    "elements": "air_temperature"
 }
 
 response = requests.get(url, headers=headers, params=params, auth=(api_key, ""))
@@ -19,9 +19,37 @@ response = requests.get(url, headers=headers, params=params, auth=(api_key, ""))
 if response.status_code == 200:
     data = response.json()
 
-    with open('Weather_Data_MET.json', 'a') as json_file:
-        json.dump(data, json_file, indent=4)
+    observations = []
+    observations = []
+    for entry in data['data']:
+        for obs in entry['observations']:
+            observations.append({
+                'Dato': entry['referenceTime'],
+                'Temperatur (°C)': obs['value']
+            })
+
+    # Konvertere til Pandas DataFrame
+    df = pd.DataFrame(observations)
+
+    # Konvertere dato til riktig format
+    df['Dato'] = pd.to_datetime(df['Dato']).dt.date  # Kun dato, ikke klokkeslett
+
+    # Beregne daglig gjennomsnittstemperatur
+    df_daily = df.groupby('Dato', as_index=False)['Temperatur (°C)'].mean()
+
+    # Vise resultatet
+    print(df_daily)
+
+        # Konvertere til Pandas DataFrame
+    df = pd.DataFrame(observations)
+
+    # Konvertere tid til riktig format
+    df['Dato'] = pd.to_datetime(df['Dato'])
+
+    # Vise resultatet
+    print(df)
 
 else:
-    print("Error")
+    print(response.status_code)
     print(response.url)
+
