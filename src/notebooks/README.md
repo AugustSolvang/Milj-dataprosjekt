@@ -19,3 +19,38 @@ API-met og Frost.met har gratis tilgang på deres API-er. OpenWeatherMap har en 
 1. Hvilke åpne datakilder er identifisert som relevante for miljødata, og hva er kriteriene (f.eks. kildeautoritet, datakvalitet, tilgjengelighet, brukervennlighet osv.) for å vurdere deres pålitelighet og kvalitet?
 2. Hvilke teknikker (f.eks. håndtering av CSV-filer, JSON-data) er valgt å bruke for å lese inn dataene, og hvordan påvirker disse valgene datakvaliteten og prosessen videre?
 3. Dersom det er brukt API-er, hvilke spesifikke API-er er valgt å bruke, og hva er de viktigste dataene som kan hentes fra disse kildene?
+
+
+Her skal dere fokusere på databehandling ved å utvikle funksjoner som renser og formaterer de innsamlede dataene, med særlig vekt på håndtering av manglende verdier og uregelmessigheter ved hjelp av Pandas. I tillegg skal dere benytte teknikker som list comprehensions, iteratorer, pandas og pandas sql (sqldf) for å manipulere dataene effektivt, noe som vil bidra til å forberede dataene for videre analyse.
+
+METODER FOR HÅNDTERING AV MANGLENDE VERDIER:
+Mulige metoder innebærer:
+isnull().sum() - Identifiserer manglende verdier
+fillna() - Erstatter manglende verdier
+dropna() - Fjerner rader med manglende verdier
+
+LIST COMPREHENSIONS FOR MANIPULASJON AV DATA::
+Brukes som oftest i stedet for " for løkker" for å gjøre koden lettere og mer effektiv.
+
+f.eks ["hot" if temperature > 20 else "cold" for temperature in .....]
+
+Dette gjør koden mer oversiktlig og lesbar.
+
+HVORDAN PANDAS SQL FORBEDRER DATAMANIPULERING:
+
+Pandasql.sqldf lar oss bruke SQL-spørringer dirkete på Pandas-dataframes, noe som igjen gjør koden lettere og mer fleksibelt.
+
+f.eks
+from pandasql import sqldf
+
+query = "SELECT * FROM ... WHERE temperature > 20"
+
+dette henter data kun da temperaturen var over 20.
+
+HVILKE UREGELMESSIGHETER:
+
+
+1. Hvilke metoder vil du bruke for å identifisere og håndtere manglende verdier i datasettet?
+2. Kan du gi et eksempel på hvordan du vil bruke list comprehensions for å manipulere dataene?
+3. Hvordan kan Pandas SQL (sqldf) forbedre datamanipuleringen sammenlignet med tradisjonelle Pandas-operasjoner?
+4. Hvilke spesifikke uregelmessigheter i dataene forventer du å møte, og hvordan planlegger du å håndtere dem?
