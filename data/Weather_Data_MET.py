@@ -12,8 +12,7 @@ def fetch_data(Api_Key, Url, Sources, Elements):
     End_Year = date.today().year
 
     for year in range(Start_Year, End_Year + 1):
-        data_list = []
-        Added_Dates = set()
+        data_dict = {}
 
         Start_Date = f"{year}-01-01"
         End_Date = f"{year}-12-31"
@@ -25,14 +24,19 @@ def fetch_data(Api_Key, Url, Sources, Elements):
             data = res.json()
             for observation in data.get("data", []):
                 Date = observation["referenceTime"][:10]
-                if Date not in Added_Dates:
-                    Value = observation["observations"][0]["value"]
-                    data_list.append([Date, Value])
-                    Added_Dates.add(Date)
+                Value = observation["observations"][0]["value"]
+
+                if Date not in data_dict:
+                    data_dict[Date] = []
+                data_dict[Date].append(Value)
+                    
+    
         else:
             print("Error. Statuscode er ikke lik 200")
             print(res.status_code)
         
+        data_list = [[Date, sum(Values)/len(Values)] for Date, Values in data_dict.items()]
+
         df = pd.DataFrame(data_list, columns = ["Date", "Temp[°C]"])
         print(df)
 
