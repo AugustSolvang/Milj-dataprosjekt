@@ -10,7 +10,7 @@ headers = {
 
 params = {
     "sources": "SN18700",
-    "referencetime": "-02-01/2017-02-01",
+    "referencetime": "2000-01-01/2017-02-01",
     "elements": "air_temperature"
 }
 
@@ -40,14 +40,6 @@ if response.status_code == 200:
     # Vise resultatet
     print(df_daily)
 
-        # Konvertere til Pandas DataFrame
-    df = pd.DataFrame(observations)
-
-    # Konvertere tid til riktig format
-    df['Dato'] = pd.to_datetime(df['Dato'])
-
-    # Vise resultatet
-    print(df)
 
 else:
     print(response.status_code)

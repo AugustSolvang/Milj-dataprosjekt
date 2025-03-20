@@ -1,18 +1,39 @@
 import requests
-from requests.auth import HTTPBasicAuth  
+import datetime
+import pandas as pd
 
-api_key = "2e53c5fc-1cab-435f-bf3d-5b1cd9352d86"
-url = "https://frost.met.no/api/v1/sources"
+API_KEY = "f6ece757-0cb9-40c7-87cf-7817a5e6bb70"
+BASE_URL = "https://frost.met.no/observations/v0.jsonld"
+STATION = "SN18700"  # Endre til ønsket værstasjon
+ELEMENT = "air_temperature"
 
-params = {
-    "types": "SensorSystem",
-    "geometry": "nearest(10,59.91,10.75)"
-}
+def fetch_temperature_data():
+    """Henter daglig temperatur fra Frost API i mindre intervaller og returnerer en Pandas DataFrame."""
+    start_year = 1950  # Juster etter behov
+    end_year = datetime.date.today().year
+    data_list = []
+    
+    for year in range(start_year, end_year + 1):
+        start_date = f"{year}-01-01"
+        end_date = f"{year}-12-31"
+        date_range = f"{start_date}/{end_date}"
+        url = f"{BASE_URL}?sources={STATION}&elements={ELEMENT}&referencetime={date_range}"
+        
+        response = requests.get(url, auth=(API_KEY, ""))
+        if response.status_code == 200:
+            data = response.json()
+            for obs in data.get("data", []):
+                date = obs["referenceTime"][:10]
+                temp = obs["observations"][0]["value"]
+                data_list.append([date, temp])
+        else:
+            print(f"Feil ved henting av data for {year}: {response.text}")
+    
+    df = pd.DataFrame(data_list, columns=["Dato", "Temperatur (°C)"])
+    return df
 
-# Bruk Basic Auth (API-nøkkel som brukernavn, tomt passord)
-response = requests.get(url, auth=HTTPBasicAuth(api_key, ""), params=params)
+if __name__ == "__main__":
+    df = fetch_temperature_data()
+    print(df)
 
-if response.status_code == 200:
-    print(response.json())  # ✅ Skriver ut tilgjengelige stasjoner
-else:
-    print(f"Feil: {response.status_code}, {response.text}")
+
