@@ -4,13 +4,6 @@ import requests
 import pandas as pd
 from datetime import date
 
-
-Api_Key = os.getenv("API_Key_MET")
-Url = os.getenv("Base_MET_URL")
-Sources = "SN18700"
-Elements = "air_temperature"
-
-
 load_dotenv()
 
 def fetch_data(Api_Key, Url, Sources, Elements):
@@ -42,7 +35,16 @@ def fetch_data(Api_Key, Url, Sources, Elements):
         df = pd.DataFrame(data_list, columns = ["Date", "Temp[°C]"])
         print(df)
 
+
+Api_Key = os.getenv("API_Key_MET")
+Url = os.getenv("Base_MET_URL")
+Sources = "SN18700"
+Elements = "air_temperature"
+
+
 if __name__ == "__main__":
     df = fetch_data(Api_Key, Url, Sources, Elements)
     print(df)
 
+
+# Databehandling
