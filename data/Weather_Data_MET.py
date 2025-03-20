@@ -10,10 +10,11 @@ load_dotenv()
 def fetch_data(Api_Key, Url, Sources, Elements):
     Start_Year = 1900
     End_Year = date.today().year
-    data_list = []
-    Added_Dates = set()
 
     for year in range(Start_Year, End_Year + 1):
+        data_list = []
+        Added_Dates = set()
+
         Start_Date = f"{year}-01-01"
         End_Date = f"{year}-12-31"
         Reference_Time = f"{Start_Date}/{End_Date}"
