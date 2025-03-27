@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import json
-import pandas
-import numpy
+import pandas as pd
+import numpy as np
 
 class Data_Process:
 
@@ -24,7 +24,10 @@ class Data_Process:
             print("Ikke en json fil")
 
 
-    def DataFrame(json):
-        
-
-        
+    def DataFrame(Filename):
+        DataDict = DataDict(Filename)
+        DataList = [[Date, Value] for Date, Value in DataDict.items()]
+        df = pd.DataFrame(DataList, columns = ["Date", "Anomoly [°C]"])
+        return df
+    
+    def 
