@@ -2,7 +2,7 @@
 from test_data_process import Data_Process  # Importer Data_Process-klassen fra den originale filen
 
 # Bruk datafilen som ble laget
-filename = "data.json"  # Sørg for at filen finnes i samme mappe som testfilen, eller gi den komplette stien
+filename = "rotte.json"  # Sørg for at filen finnes i samme mappe som testfilen, eller gi den komplette stien
 
 # 1. Test DataFrame-funksjonen
 df = Data_Process.DataFrame(filename)
