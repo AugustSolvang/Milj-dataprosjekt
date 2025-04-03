@@ -1,0 +1,2276 @@
+{
+    "@context": "https://frost.met.no/schema",
+    "@type": "ObservationResponse",
+    "apiVersion": "v0",
+    "license": "https://creativecommons.org/licenses/by/3.0/no/",
+    "createdAt": "2025-04-03T12:16:33Z",
+    "queryTime": 0.452,
+    "currentItemCount": 133,
+    "itemsPerPage": 133,
+    "offset": 0,
+    "totalItemCount": 133,
+    "currentLink": "https://frost.met.no/observations/v0.jsonld?sources=SN18700&elements=best_estimate_sum(precipitation_amount_anomaly%20P1M%201961_1990)&referencetime=1940-01-01/2025-01-01",
+    "data": [
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2006-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 205.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 149.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 360.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 122.3,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 134.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 108.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 170,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 64.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 122.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 47.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 251.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 139,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2014-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 50,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 226.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 76.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 131.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 41.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 201.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 105.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 109.3,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 146.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 175.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 9.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 103.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2015-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 104,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 87.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 140,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 100.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 186.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 138.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 94,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 105.3,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 161.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 45.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 15.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 95.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2016-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 35.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 52.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 151.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 86.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 139,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 147.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 139.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 121.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 178.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 111,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 131.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 107.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2017-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 87.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 176.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 149.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 28.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 86.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 53,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 59.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 19.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 64.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 138.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 46,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 138.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2018-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 114.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 72.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 225.3,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 156.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 27.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 156.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 192,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 72.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 142.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 187.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 131.3,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 153.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2019-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 103.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 152.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 95.3,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 94.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 78.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 85.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 168.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 203.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 62.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 84.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 245.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 108.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2020-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 287.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 96.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 74.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 72.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 33.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 182.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 95.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 156.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 15.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 60,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 170.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 59.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2021-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 60.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 48.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 187.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 7.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 23.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 95.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 136.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 72.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 96.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 70.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 98.7,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 114.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2022-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 155.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 205.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 127.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 154.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 243.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 32.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 61.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 181.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 291.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 117.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 42.4,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 82.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2023-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 71.3,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-01-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 153.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-02-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 232.8,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-03-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 209.1,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-04-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 112,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-05-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 127.5,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-06-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 170.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-07-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 173.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-08-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 155.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-09-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 117.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-10-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 125.6,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-11-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 39.9,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        },
+        {
+            "sourceId": "SN18700:0",
+            "referenceTime": "2024-12-01T00:00:00.000Z",
+            "observations": [
+                {
+                    "elementId": "best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)",
+                    "value": 96.2,
+                    "unit": "percent",
+                    "timeOffset": "PT6H",
+                    "timeResolution": "P1M",
+                    "timeSeriesId": 0,
+                    "performanceCategory": "C",
+                    "exposureCategory": "2",
+                    "qualityCode": 2
+                }
+            ]
+        }
+    ]
+}
