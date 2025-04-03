@@ -30,30 +30,37 @@ class Data_Process:
     def DataFrame(Filename):
         """Konverter data fra JSON til en Pandas DataFrame og rens dataene."""
         DataDict = Data_Process.DataDict(Filename)
+        
         if not DataDict:
-            return pd.DataFrame()
+            return pd.DataFrame()  # Returnerer en tom DataFrame hvis ingen data
+        
+        # Omforme DataDict til en liste av tuples for konvertering til DataFrame
         data_list = [(date, value) for date, values in DataDict.items() for value in values]
+
+        # Konvertere til Pandas DataFrame
         df = pd.DataFrame(data_list, columns=["Date", "Value"])
+
+        # Konvertere 'Date' kolonnen til datetime format for enklere manipulering
         df["Date"] = pd.to_datetime(df["Date"])
-        df = df.dropna(subset=["Value"])
-        df = df[df["Value"] >= 0]  
+
+        # Rense data: Håndtere manglende verdier (for eksempel hvis noen verdier er None)
+        df = df.dropna(subset=["Value"])  # Fjerne rader med manglende 'Value'
+        
+        # Rens uregelmessigheter: Hvis det er ulogiske verdier (f.eks. negative temperaturer)
+        df = df[df["Value"] >= 0]  # Filtrer ut negative verdier
 
         return df
 
-    
     @staticmethod
     def AnalyzeDataWithSQL(df):
         """Analyser data ved hjelp av SQL (sqldf) på DataFrame."""
+        # Eksempel på SQL-spørring: Beregn gjennomsnittlig verdi per år
         query = """
-        SELECT strftime('%Y', Date) as Year, 
-        AVG(Value) as AvgValue,
-        MIN(Value) as MinValue,
-        MAX(Value) as MaxValue
+        SELECT strftime('%Y', Date) as Year, AVG(Value) as AvgValue
         FROM df
         GROUP BY Year
         ORDER BY Year
         """
+        # Kjør SQL-spørringen på DataFrame
         result = sqldf(query, locals())
-        return result
-    
-
+        return result 
