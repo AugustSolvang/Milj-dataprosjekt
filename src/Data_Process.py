@@ -30,4 +30,4 @@ class Data_Process:
         df = pd.DataFrame(DataList, columns = ["Date", "Anomoly [°C]"])
         return df
     
-    def 
+    
