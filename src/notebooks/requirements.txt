@@ -1,6 +1,11 @@
 requests
 pandas
 python-dotenv
-pandasq
+pandas
 unittest
 matplotlib
+csv
+json
+os
+dotenv
+datetime

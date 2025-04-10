@@ -3,28 +3,41 @@ import pandas as pd
 import numpy as np
 from pandasql import sqldf
 import json
+import csv
+
 
 class Data_Process:
 
     @staticmethod
     def DataDict(Filename):
-        """Les JSON-fil og returner en ordbok med data organisert per dato."""
+        """Les JSON-fil eller CSV.fil og returner en ordbok med data organisert per dato."""
+        DataDict = {}
         if Filename.endswith(".json"):
             with open(Filename, "r") as readfile:
                 data = json.load(readfile)
-                DataDict = {}
-
                 for observation in data.get("data", []):
                     Date = observation["referenceTime"][:10]
                     Value = observation["observations"][0]["value"]
 
                     if Date not in DataDict:
-                        DataDict[Date] = []
+                        DataDict[Date] =[]
                     DataDict[Date].append(Value)
-                
-                return DataDict
+
+
+
+        elif Filename.endswith(".csv"):
+            with open(Filename, "r") as readfile:
+                reader = csv.DictReader(readfile)
+                for row in reader:
+                    Date = row.get("dato")
+                    if Date:
+                        if Date not in DataDict:
+                            DataDict[Date] = []
+                            DataDict[Date].append(row)
         else:
-            print("Ikke en json fil")
+            print("Ikke en json/csv fil")
+
+        return DataDict
 
     @staticmethod
     def DataFrame(Filename):
@@ -54,6 +67,20 @@ class Data_Process:
         ORDER BY Year
         """
         result = sqldf(query, locals())
-        return result
+        df["Year"] = df["Date"].dt.year
+        median_df = df.groupby("Year")["Value"].median().reset_index(name="MedianValue")
+
+        result["Year"] = result["Year"].astype(int)
+        median_df["Year"] = median_df["Year"].astype(int)
+
+
+        full_result = pd.merge(result, median_df, on="Year")
+        return full_result        
     
 
+dp = Data_Process()
+df = dp.DataFrame("rotte.json")
+print(df)
+
+result = dp.AnalyzeDataWithSQL(df)
+print(result)
