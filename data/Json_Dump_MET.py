@@ -13,6 +13,7 @@ def fetch_data(Filename, Api_Key, Url, Sources, Elements, Reference_Time):
         data = res.json()
         with open(Filename, "a") as f:
             json.dump(data, f, indent = 4)
+        print(Endpoint)
     else:
         print("Feil")
         print(res.status_code)
