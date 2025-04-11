@@ -9,3 +9,5 @@ json
 os
 dotenv
 datetime
+seaborn
+sklearn.linear_model
