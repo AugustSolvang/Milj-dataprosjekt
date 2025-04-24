@@ -8,3 +8,9 @@ print("DataFrame:\n", df)
 if not df.empty:
     result_df = Data_Process.AnalyzeDataWithSQL(df)
     print("Avg/Min/Max Values (SQL):\n", result_df)
+
+
+if not df.empty:
+    Data_Process.PlotData(df)
+
+

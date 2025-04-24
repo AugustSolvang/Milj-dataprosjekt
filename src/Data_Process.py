@@ -20,10 +20,8 @@ class Data_Process:
                     Value = observation["observations"][0]["value"]
 
                     if Date not in DataDict:
-                        DataDict[Date] =[]
+                        DataDict[Date] = []
                     DataDict[Date].append(Value)
-
-
 
         elif Filename.endswith(".csv"):
             with open(Filename, "r") as readfile:
@@ -33,7 +31,7 @@ class Data_Process:
                     if Date:
                         if Date not in DataDict:
                             DataDict[Date] = []
-                            DataDict[Date].append(row)
+                        DataDict[Date].append(row)
         else:
             print("Ikke en json/csv fil")
 
@@ -49,11 +47,10 @@ class Data_Process:
         df = pd.DataFrame(data_list, columns=["Date", "Value"])
         df["Date"] = pd.to_datetime(df["Date"])
         df = df.dropna(subset=["Value"])
-        df = df[df["Value"] >= 0]  
+        df = df[df["Value"] >= 0]
 
         return df
 
-    
     @staticmethod
     def AnalyzeDataWithSQL(df):
         """Analyser data ved hjelp av SQL (sqldf) på DataFrame."""
@@ -73,14 +70,44 @@ class Data_Process:
         result["Year"] = result["Year"].astype(int)
         median_df["Year"] = median_df["Year"].astype(int)
 
-
         full_result = pd.merge(result, median_df, on="Year")
-        return full_result        
+        return full_result
+
+
+    @staticmethod
+    def PlotData(df):
+        """Plotter gjennomsnittet av dataene per år med glidende gjennomsnitt."""
+        # Beregn gjennomsnitt per år
+        result_df = Data_Process.AnalyzeDataWithSQL(df)
+
+        # Glidende gjennomsnitt
+        result_df['Smoothed'] = result_df['AvgValue'].rolling(window=2).mean()  # Glatt ut med et vindu på 2
+
+        # Plot gjennomsnittet per år
+        plt.figure(figsize=(10, 6))
+        plt.plot(result_df["Year"], result_df["AvgValue"], marker='o', label="Avg Value per Year")
+        plt.plot(result_df["Year"], result_df["Smoothed"], color="red", label="Smoothed (Moving Avg)")
+        plt.xlabel("Year")
+        plt.ylabel("Avg Value")
+        plt.title("Smoothed Average Value per Year with Moving Average")
+        plt.xticks(rotation=45)
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
+
+
+if __name__ == "__main__":
+    filename = "rotte.json"  # Erstatt med stien til din JSON-fil
+    # Les og rens data
+    df = Data_Process.DataFrame(filename)
+    print(df)
+    dp = Data_Process()
+    result = dp.AnalyzeDataWithSQL(df)
+    print(result)
     
-
-dp = Data_Process()
-df = dp.DataFrame("rotte.json")
-print(df)
-
-result = dp.AnalyzeDataWithSQL(df)
-print(result)
+    if not df.empty:
+        # Plot gjennomsnittet per år med glidende gjennomsnitt
+        Data_Process.PlotData(df)
+    else:
+        print("Ingen data tilgjengelig")
