@@ -1,15 +1,29 @@
 from Data_Process import Data_Process
-import pandas
+import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 class Data_Plot:
-    def plot(df, x_col, y_col, x_label, y_label):
-        x_values = df.columns[0]
-        y_values = df.columns[1]
-        plt.plot(x_values, y_values)
-        plt.xlabel(x_label)
-        plt.ylabel(y_label)
+
+    @staticmethod
+    def plot_lineplot(df, xlabel, ylabel, title):
+        sns.lineplot(data = df, x = xlabel, y = ylabel)
+        
+        plt.title(title)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
         plt.legend()
         plt.show()
-    
-    def 
+
+    @staticmethod
+    def plot_regplot(df, xlabel, ylabel, title):
+        sns.regplot(data = df, x = xlabel, y = ylabel)
+
+        plt.title(title)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.legend()
+        plt.show()
+
+
+
