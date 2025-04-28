@@ -15,7 +15,7 @@ def fetch_data(Filename, Api_Key, Url, Sources, Elements, Reference_Time):
             json.dump(data, f, indent = 4)
         print(Endpoint)
     else:
-        print("Feil")
+        print("Error")
         print(res.status_code)
 
 load_dotenv()
