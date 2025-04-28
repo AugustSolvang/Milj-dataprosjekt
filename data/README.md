@@ -11,3 +11,9 @@ Link til APIen:
 https://frost.met.no/observations/v0.jsonld?sources=SN18700&elements=best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)&referencetime=1940-01-01/2025-01-01
 
 For å hente ut data for luftkvalitet var vi nødt til å laste ned en csv fil fra nettet, da vi ikke fant noen API som ga oss tilgang til denne typen data. Dataen er hentet fra [NILU](https://luftkvalitet.nilu.no/historikk)
+
+Denne delen ble fjernet fra starten av csv filen vår, sånn at CSVLint fikk status "OK":
+Det gjennomfoeres kvalitetskontroll av luftkvalitetsdata.QC-flagg viser hvilket nivaa av kvalitetskontroll dataene har vaert gjennom.QC=1 (Raadata) QC = 2(Automatisk kontrollerte data) QC= 3(Skalerte data) QC= 4(Kvalitetssikrede data / Godkjente data)
+Ved kvalitetskontroll flagges verdier som gyldige eller ugyldige(f.eks ved instrumentfeil).QA = 0(Gyldig verdi) QA = 1(Ugyldig verdi)
+Data er hentet fra loesningen https://luftkvalitet.nilu.no 
+Tid;Bekkestua NO µg/m³ Month;Dekning
