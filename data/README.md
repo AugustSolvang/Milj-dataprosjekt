@@ -10,4 +10,4 @@ For å hente ut data for nedbørsmengde i forhold til normen fra 1961-1990 brukt
 Link til APIen:
 https://frost.met.no/observations/v0.jsonld?sources=SN18700&elements=best_estimate_sum(precipitation_amount_anomaly P1M 1961_1990)&referencetime=1940-01-01/2025-01-01
 
-For å hente ut data for luftkvalitet var vi nødt til å laste ned en csv fil fra nettet, da vi ikke fant noen API som ha oss tilgang til denne typen data. Dataen er hentet fra [NILU](https://luftkvalitet.nilu.no/historikk) levert av
+For å hente ut data for luftkvalitet var vi nødt til å laste ned en csv fil fra nettet, da vi ikke fant noen API som ga oss tilgang til denne typen data. Dataen er hentet fra [NILU](https://luftkvalitet.nilu.no/historikk)
