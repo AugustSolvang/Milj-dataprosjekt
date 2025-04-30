@@ -3,11 +3,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+#various functions for plotting graphs
 class Data_Plot:
 
     @staticmethod
     def plot_lineplot(df, xlabel, ylabel, title):
-        sns.lineplot(data = df, x = xlabel, y = ylabel)
+        sns.lineplot(data = df, x = xlabel, y = ylabel) #plots a line chart
         
         plt.title(title)
         plt.xlabel(xlabel)
@@ -17,7 +18,7 @@ class Data_Plot:
 
     @staticmethod
     def plot_scatterplot(df, xlabel, ylabel, title):
-        sns.scatterplot(data = df, x = xlabel, y = ylabel)
+        sns.scatterplot(data = df, x = xlabel, y = ylabel) #plots a scatter chart
 
         plt.title(title)
         plt.xlabel(xlabel)
@@ -27,7 +28,7 @@ class Data_Plot:
 
     @staticmethod
     def plot_regplot(df, xlabel, ylabel, title):
-        sns.regplot(data = df, x = xlabel, y = ylabel)
+        sns.regplot(data = df, x = xlabel, y = ylabel) #plots scatter with regression line
 
         plt.title(title)
         plt.xlabel(xlabel)
@@ -37,7 +38,7 @@ class Data_Plot:
 
     @staticmethod
     def plot_barplot(df, xlabel, ylabel, title):
-        sns.barplot(data = df, x = xlabel, y = ylabel)
+        sns.barplot(data = df, x = xlabel, y = ylabel) #plots a bar chart
 
         plt.title(title)
         plt.xlabel(xlabel)
