@@ -27,7 +27,7 @@ class Data_Plot:
 
     @staticmethod
     def plot_regplot(df, xlabel, ylabel, title):
-        sns.scatterplot(data = df, x = xlabel, y = ylabel)
+        sns.regplot(data = df, x = xlabel, y = ylabel)
 
         plt.title(title)
         plt.xlabel(xlabel)
