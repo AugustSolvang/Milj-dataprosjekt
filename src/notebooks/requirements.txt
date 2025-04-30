@@ -1,0 +1,13 @@
+requests
+pandas
+python-dotenv
+pandas
+unittest
+matplotlib
+csv
+json
+os
+dotenv
+datetime
+seaborn
+sklearn.linear_model
