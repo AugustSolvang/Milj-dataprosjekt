@@ -16,8 +16,8 @@ class Data_Plot:
         plt.show()
 
     @staticmethod
-    def plot_regplot(df, xlabel, ylabel, title):
-        sns.regplot(data = df, x = xlabel, y = ylabel)
+    def plot_scatterplot(df, xlabel, ylabel, title):
+        sns.scatterplot(data = df, x = xlabel, y = ylabel)
 
         plt.title(title)
         plt.xlabel(xlabel)
@@ -25,5 +25,24 @@ class Data_Plot:
         plt.legend()
         plt.show()
 
+    @staticmethod
+    def plot_regplot(df, xlabel, ylabel, title):
+        sns.scatterplot(data = df, x = xlabel, y = ylabel)
+
+        plt.title(title)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.legend()
+        plt.show()
+
+    @staticmethod
+    def plot_barplot(df, xlabel, ylabel, title):
+        sns.barplot(data = df, x = xlabel, y = ylabel)
+
+        plt.title(title)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.legend()
+        plt.show()
 
 
