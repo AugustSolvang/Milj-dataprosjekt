@@ -1,8 +1,4 @@
-﻿Det gjennomfoeres kvalitetskontroll av luftkvalitetsdata.QC-flagg viser hvilket nivaa av kvalitetskontroll dataene har vaert gjennom.QC=1 (Raadata) QC = 2(Automatisk kontrollerte data) QC= 3(Skalerte data) QC= 4(Kvalitetssikrede data / Godkjente data)
-Ved kvalitetskontroll flagges verdier som gyldige eller ugyldige(f.eks ved instrumentfeil).QA = 0(Gyldig verdi) QA = 1(Ugyldig verdi)
-Data er hentet fra loesningen https://luftkvalitet.nilu.no 
-Tid;Bekkestua NO µg/m³ Month;Dekning
-01.01.1950 00:00;;
+﻿01.01.1950 00:00;;
 01.02.1950 00:00;;
 01.03.1950 00:00;;
 01.04.1950 00:00;;

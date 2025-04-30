@@ -1,6 +1,6 @@
 from Data_Process import Data_Process
 
-filename = "rotte.json"
+filename = "Test_Data.csv"
 
 df = Data_Process.DataFrame(filename)
 print("DataFrame:\n", df)

@@ -10,50 +10,64 @@ class Data_Process:
 
     @staticmethod
     def DataDict(Filename):
-        """Les JSON-fil eller CSV.fil og returner en ordbok med data organisert per dato."""
-        DataDict = {}
+        """Read JSON or CSV file and return a cleaned DataFrame."""
         if Filename.endswith(".json"):
+            data_list = []
             with open(Filename, "r") as readfile:
                 data = json.load(readfile)
                 for observation in data.get("data", []):
-                    Date = observation["referenceTime"][:10]
-                    Value = observation["observations"][0]["value"]
+                    date = observation["referenceTime"][:10]
+                    value = observation["observations"][0].get("value", None)
+                    if value is not None:
+                        data_list.append((date, value))
 
-                    if Date not in DataDict:
-                        DataDict[Date] = []
-                    DataDict[Date].append(Value)
+            df = pd.DataFrame(data_list, columns=["Date", "Value"])
+            df["Date"] = pd.to_datetime(df["Date"])
+            df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
+            df = df.dropna(subset=["Date", "Value"])
+            df = df[df["Value"] >= 0]
+            return df
 
         elif Filename.endswith(".csv"):
-            with open(Filename, "r") as readfile:
-                reader = csv.DictReader(readfile)
-                for row in reader:
-                    Date = row.get("dato")
-                    if Date:
-                        if Date not in DataDict:
-                            DataDict[Date] = []
-                        DataDict[Date].append(row)
-        else:
-            print("Ikke en json/csv fil")
+            try:
+                df = pd.read_csv(
+                    Filename,
+                    sep=";",
+                    encoding="utf-8",
+                    decimal=",",
+                    names=["Date", "Value", "Coverage"],
+                    na_values=[""],
+                )
+                df.columns = ["Date", "Value", "Coverage"]
+            except Exception as e:
+                print(f"Error reading CSV: {e}")
+                return pd.DataFrame()
 
-        return DataDict
+            print("Column name set manually:", df.columns)
+            df = df.dropna(subset=["Value", "Coverage"], how="all")
+            df["Date"] = pd.to_datetime(df["Date"], format="%d.%m.%Y %H:%M", errors='coerce', dayfirst=True)
+            df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
+            df = df.dropna(subset=["Date", "Value"])
+            df = df[df["Value"] >= 0]
+            print("Cleaned data:", df.head())
+            return df
+        else:
+            print("Not a supported file format.")
+            return pd.DataFrame()
 
     @staticmethod
     def DataFrame(Filename):
-        """Konverter data fra JSON til en Pandas DataFrame og rens dataene."""
-        DataDict = Data_Process.DataDict(Filename)
-        if not DataDict:
-            return pd.DataFrame()
-        data_list = [(date, value) for date, values in DataDict.items() for value in values]
-        df = pd.DataFrame(data_list, columns=["Date", "Value"])
-        df["Date"] = pd.to_datetime(df["Date"])
-        df = df.dropna(subset=["Value"])
-        df = df[df["Value"] >= 0]
-
+        """Return cleaned DataFrame from JSON or CSV file."""
+        df = Data_Process.DataDict(Filename)
         return df
 
     @staticmethod
     def AnalyzeDataWithSQL(df):
-        """Analyser data ved hjelp av SQL (sqldf) på DataFrame."""
+        """Analyze data using SQL (sqldf) on DataFrame."""
+        if df.empty:
+            print("No dataframe to be found")
+            return pd.DataFrame()
+
         query = """
         SELECT strftime('%Y', Date) as Year, 
         AVG(Value) as AvgValue,
@@ -64,6 +78,7 @@ class Data_Process:
         ORDER BY Year
         """
         result = sqldf(query, locals())
+
         df["Year"] = df["Date"].dt.year
         median_df = df.groupby("Year")["Value"].median().reset_index(name="MedianValue")
 
@@ -73,17 +88,16 @@ class Data_Process:
         full_result = pd.merge(result, median_df, on="Year")
         return full_result
 
-
     @staticmethod
     def PlotData(df):
-        """Plotter gjennomsnittet av dataene per år med glidende gjennomsnitt."""
-        # Beregn gjennomsnitt per år
+        """Plots the average of the data per year using a moving average."""
         result_df = Data_Process.AnalyzeDataWithSQL(df)
+        if result_df.empty:
+            print("No data to plot.")
+            return
 
-        # Glidende gjennomsnitt
-        result_df['Smoothed'] = result_df['AvgValue'].rolling(window=2).mean()  # Glatt ut med et vindu på 2
+        result_df['Smoothed'] = result_df['AvgValue'].rolling(window=2).mean()
 
-        # Plot gjennomsnittet per år
         plt.figure(figsize=(10, 6))
         plt.plot(result_df["Year"], result_df["AvgValue"], marker='o', label="Avg Value per Year")
         plt.plot(result_df["Year"], result_df["Smoothed"], color="red", label="Smoothed (Moving Avg)")
@@ -98,16 +112,15 @@ class Data_Process:
 
 
 if __name__ == "__main__":
-    filename = "rotte.json"  # Erstatt med stien til din JSON-fil
-    # Les og rens data
+    filename = "Test_Data.csv" #Choose between JSON/CSV
     df = Data_Process.DataFrame(filename)
     print(df)
-    dp = Data_Process()
-    result = dp.AnalyzeDataWithSQL(df)
-    print(result)
-    
+
     if not df.empty:
-        # Plot gjennomsnittet per år med glidende gjennomsnitt
+        dp = Data_Process()
+        result = dp.AnalyzeDataWithSQL(df)
+        print(result)
+
         Data_Process.PlotData(df)
     else:
-        print("Ingen data tilgjengelig")
+        print("No data available")
