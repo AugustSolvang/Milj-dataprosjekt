@@ -10,3 +10,5 @@ os
 dotenv
 datetime
 pytest
+bokeh
+seaborn

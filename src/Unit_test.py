@@ -2,6 +2,7 @@ import unittest
 import pandas as pd
 import os
 from Data_Process import Data_Process
+from Data_Plot import Data_plot
 
 
 class TestDataProcess(unittest.TestCase):
@@ -111,6 +112,60 @@ class TestDataProcess(unittest.TestCase):
         # Cleanup
         os.remove(broken_csv_path)
 
+    def setUp(self):
+        # Arrange: Sett opp en test-DataFrame
+        self.df = pd.DataFrame({
+            "Year": [2020, 2021, 2022],
+            "Value": [100, 150, 200]
+        })
 
-if __name__ == '__main__':
+    def test_plot_lineplot_runs_without_error(self):
+        # Act + Assert: Ingen exceptions
+        try:
+            Data_Plot.plot_lineplot(self.df, "Year", "Value", "Test Lineplot")
+        except Exception as e:
+            self.fail(f"plot_lineplot() raised an exception: {e}")
+
+    def test_plot_scatterplot_runs_without_error(self):
+        try:
+            Data_Plot.plot_scatterplot(self.df, "Year", "Value", "Test Scatterplot")
+        except Exception as e:
+            self.fail(f"plot_scatterplot() raised an exception: {e}")
+
+    def test_plot_regplot_runs_without_error(self):
+        try:
+            Data_Plot.plot_regplot(self.df, "Year", "Value", "Test Regplot")
+        except Exception as e:
+            self.fail(f"plot_regplot() raised an exception: {e}")
+
+    def test_plot_barplot_runs_without_error(self):
+        try:
+            Data_Plot.plot_barplot(self.df, "Year", "Value", "Test Barplot")
+        except Exception as e:
+            self.fail(f"plot_barplot() raised an exception: {e}")
+
+    def test_plot_bokeh_saves_file(self):
+        # Arrange
+        output_filename = "test_bokeh_plot.html"
+        if os.path.exists(output_filename):
+            os.remove(output_filename)
+
+        # Act
+        Data_Plot.plot_bokeh(self.df, "Year", "Value", "Test Bokeh", chart_type="line", output_filename=output_filename)
+
+        # Assert
+        self.assertTrue(os.path.exists(output_filename), "Bokeh file was not created.")
+
+        # Cleanup
+        os.remove(output_filename)
+
+    def test_plot_bokeh_invalid_chart_type_raises_valueerror(self):
+        # Act + Assert
+        with self.assertRaises(ValueError) as context:
+            Data_Plot.plot_bokeh(self.df, "Year", "Value", "Test Invalid", chart_type="pie")
+
+        self.assertIn("Invalid chart_type", str(context.exception))
+
+
+if __name__ == "__main__":
     unittest.main()
