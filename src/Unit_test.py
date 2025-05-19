@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 import os
 from Data_Process import Data_Process
-from Data_Plot import Data_plot
+from dataplot import Data_Plot
 
 
 class TestDataProcess(unittest.TestCase):
@@ -13,8 +13,6 @@ class TestDataProcess(unittest.TestCase):
         self.valid_csv_file = "Test_Data.csv"
         self.invalid_file = "invalid_file.txt"
         self.empty_df = pd.DataFrame()
-
-    # ----------- POSITIVE TESTER -----------
 
     def test_valid_json_returns_dataframe(self):
         # Arrange
@@ -59,8 +57,6 @@ class TestDataProcess(unittest.TestCase):
         self.assertIn("MinValue", result.columns)
         self.assertIn("MaxValue", result.columns)
         self.assertIn("MedianValue", result.columns)
-
-    # ----------- NEGATIVE TESTER -----------
 
     def test_invalid_filetype_returns_empty_dataframe(self):
         # Arrange
