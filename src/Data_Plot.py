@@ -1,7 +1,8 @@
-from Data_Process import Data_Process
-import pandas as pd
-import matplotlib.pyplot as plt
+from bokeh.plotting import figure, output_file, save
+from bokeh.models import ColumnDataSource
 import seaborn as sns
+import matplotlib.pyplot as plt
+
 
 #various functions for plotting graphs
 class Data_Plot:
@@ -47,3 +48,29 @@ class Data_Plot:
         plt.show()
 
 
+    @staticmethod
+    def plot_bokeh(df, xlabel, ylabel, title, chart_type = "line", output_filename = "bokeh_plot.html"):
+        """" takes in a dataframe and chart type and returns a link with interactive graphs """
+      
+        chart_type = chart_type.lower()
+        output_file(output_filename)
+        source = ColumnDataSource(df)
+
+        p = figure(title = title, x_axis_label = xlabel, y_axis_label = ylabel,
+                   width = 700, height = 400, tools = "pan,wheel_zoom,box_zoom,reset,save")
+
+        if chart_type == "line":
+            p.line(x = xlabel, y = ylabel, source = source, line_width = 2, legend_label = ylabel)
+            p.circle(x = xlabel, y = ylabel, source = source, size = 6, color = "navy", alpha = 0.5)
+        elif chart_type == "scatter":
+            p.circle(x = xlabel, y = ylabel, source = source, size = 8, color = "green", alpha = 0.6, legend_label = ylabel)
+        elif chart_type == "bar":
+            # Barplot requires x to be strings (categories)
+            df[xlabel] = df[xlabel].astype(str)
+            source = ColumnDataSource(df)
+            p.vbar(x = xlabel, top = ylabel, source = source, width = 0.7, legend_label = ylabel)
+        else:
+            raise ValueError(f"Invalid chart_type: '{chart_type}'. Use 'line', 'scatter' eller 'bar'.")
+
+        p.legend.location = "top_left"
+        save(p)
