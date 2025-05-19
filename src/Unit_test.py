@@ -6,15 +6,18 @@ from dataplot import Data_Plot
 
 
 class TestDataProcess(unittest.TestCase):
-
     def setUp(self):
-        """Kjør før hver test"""
-        self.valid_json_file = "rotte.json"
         self.valid_csv_file = "Test_Data.csv"
-        self.invalid_file = "invalid_file.txt"
-        self.empty_df = pd.DataFrame()
+        self.valid_json_file = "rotte.json"
+        self.invalid_file = "invalid.txt"
 
-    def test_valid_json_returns_dataframe(self):
+        self.df = pd.DataFrame({
+            "Year": [2020, 2021, 2022],
+            "Value": [100, 150, 200]
+    })
+
+
+    def test_valid_json_sreturns_dataframe(self):
         # Arrange
         filename = self.valid_json_file
 
@@ -107,13 +110,6 @@ class TestDataProcess(unittest.TestCase):
 
         # Cleanup
         os.remove(broken_csv_path)
-
-    def setUp(self):
-        # Arrange: Sett opp en test-DataFrame
-        self.df = pd.DataFrame({
-            "Year": [2020, 2021, 2022],
-            "Value": [100, 150, 200]
-        })
 
     def test_plot_lineplot_runs_without_error(self):
         # Act + Assert: Ingen exceptions
