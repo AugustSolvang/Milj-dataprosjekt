@@ -1,8 +1,9 @@
+import pandas as pd
 from Data_Process import Data_Process
 
-filename = "Test_Data.csv"
+data = pd.read_csv("data/Air_Quality.csv")
 
-df = Data_Process.DataFrame(filename)
+df = Data_Process.DataFrame(data)
 print("DataFrame:\n", df)
 
 if not df.empty:

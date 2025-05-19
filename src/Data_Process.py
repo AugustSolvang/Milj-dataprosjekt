@@ -87,6 +87,10 @@ class Data_Process:
 
         full_result = pd.merge(result, median_df, on="Year")
         return full_result
+    
+    #@staticmethod
+    #def LinearRegression(df):
+
 
     @staticmethod
     def PlotData(df):
@@ -112,7 +116,7 @@ class Data_Process:
 
 
 if __name__ == "__main__":
-    filename = "Test_Data.csv" #Choose between JSON/CSV
+    filename = "rotte.json" #Choose between JSON/CSV
     df = Data_Process.DataFrame(filename)
     print(df)
 
