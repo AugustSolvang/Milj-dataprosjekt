@@ -15,3 +15,16 @@ if not df.empty:
     Data_Process.PlotData(df)
 
 
+if __name__ == "__main__":
+    filename = "rotte.json" #Choose between JSON/CSV
+    df = Data_Process.DataFrame(filename)
+    print(df)
+
+    if not df.empty:
+        dp = Data_Process()
+        result = dp.AnalyzeDataWithSQL(df)
+        print(result)
+
+        Data_Process.PlotData(df)
+    else:
+        print("No data available")

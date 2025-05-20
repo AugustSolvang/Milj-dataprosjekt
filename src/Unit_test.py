@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 import os
 from Data_Process import Data_Process
-from dataplot import Data_Plot
+from Data_Plot import Data_Plot
 
 
 class TestDataProcess(unittest.TestCase):
