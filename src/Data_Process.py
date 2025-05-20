@@ -8,7 +8,7 @@ import csv
 
 
 class Data_Process:
-    
+
     @staticmethod
     def DataDict(Filename):
         """Read JSON or CSV file and return a cleaned DataFrame."""
@@ -56,13 +56,11 @@ class Data_Process:
             print("Not a supported file format.")
             return pd.DataFrame()
 
-
     @staticmethod
     def DataFrame(Filename):
         """Return cleaned DataFrame from JSON or CSV file."""
         df = Data_Process.DataDict(Filename)
         return df
-
 
     @staticmethod
     def AnalyzeDataWithSQL(df):
@@ -91,27 +89,20 @@ class Data_Process:
         full_result = pd.merge(result, median_df, on="Year")
         return full_result
 
-
-    @staticmethod
-    def Datetime_To_Ordinal(df):
-        df["dato"] = pd.to_datetime(df["dato"])
-        df["dato_ordinal"] = df["dato"].map(pd.Timestamp.toordinal)
-        return df
-    
-
     @staticmethod
     def Linear_Regression(df, x_col, y_col, future_steps=0, n_points=100):
-
         df = df.copy()
 
-        # Sjekk om x_col er dato
-        is_date = False
-        try:
-            df[x_col] = pd.to_datetime(df[x_col])
+        # Sjekk eksplisitt om x_col er datetime
+        if pd.api.types.is_datetime64_any_dtype(df[x_col]):
             df["x_num"] = df[x_col].map(pd.Timestamp.toordinal)
             is_date = True
-        except:
-            df["x_num"] = df[x_col]  # Behandler som tall
+        else:
+            df["x_num"] = pd.to_numeric(df[x_col], errors='coerce')
+            is_date = False
+
+        # Fjern rader med manglende verdier
+        df = df.dropna(subset=["x_num", y_col])
 
         # Tren regresjonsmodell
         X = df[["x_num"]]
@@ -125,16 +116,42 @@ class Data_Process:
         x_pred_num = np.linspace(x_min, x_max, n_points).reshape(-1, 1)
         y_pred = model.predict(x_pred_num)
 
-        # Tilbakekonverter dato hvis nødvendig
+        # Tilbakekonverter x_pred hvis det opprinnelig var datoer
         if is_date:
             x_pred = [pd.to_datetime(pd.Timestamp.fromordinal(int(x))) for x in x_pred_num.flatten()]
         else:
             x_pred = x_pred_num.flatten()
 
-        return x_pred, y_pred, model
+        return x_pred, y_pred, model, is_date
 
+    @staticmethod
+    def Plot_Regression(df, x_col, y_col, x_pred, y_pred, is_date=False):
+        """
+        Plot data points and linear regression line.
 
+        Parameters:
+        - df: original dataframe with data points
+        - x_col: name of x column in df
+        - y_col: name of y column in df
+        - x_pred: predicted x values from Linear_Regression
+        - y_pred: predicted y values from Linear_Regression
+        - is_date: bool, whether x values are dates
+        """
+        plt.figure(figsize=(10, 6))
 
+        # Plot original data points
+        plt.scatter(df[x_col], df[y_col], color='blue', label='Data points')
+
+        # Plot regression line
+        plt.plot(x_pred, y_pred, color='red', label='Linear regression')
+
+        plt.xlabel(x_col)
+        plt.ylabel(y_col)
+        plt.title(f'Linear Regression of {y_col} vs {x_col}')
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
 
     @staticmethod
     def PlotData(df):
@@ -160,7 +177,7 @@ class Data_Process:
 
 
 if __name__ == "__main__":
-    filename = "rotte.json" #Choose between JSON/CSV
+    filename = "rotte.json"  # Choose between JSON/CSV
     df = Data_Process.DataFrame(filename)
     print(df)
 
@@ -170,7 +187,10 @@ if __name__ == "__main__":
         print(result)
 
         Data_Process.PlotData(df)
+
+        # Eksempel på bruk av regresjon og plotting:
+        x_pred, y_pred, model, is_date = Data_Process.Linear_Regression(df, 'Date', 'Value', future_steps=3650, n_points=100)
+        Data_Process.Plot_Regression(df, 'Date', 'Value', x_pred, y_pred, is_date)
+
     else:
         print("No data available")
-
-
