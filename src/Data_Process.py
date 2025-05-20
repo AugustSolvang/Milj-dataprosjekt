@@ -1,3 +1,4 @@
+from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -7,7 +8,7 @@ import csv
 
 
 class Data_Process:
-
+    
     @staticmethod
     def DataDict(Filename):
         """Read JSON or CSV file and return a cleaned DataFrame."""
@@ -55,11 +56,13 @@ class Data_Process:
             print("Not a supported file format.")
             return pd.DataFrame()
 
+
     @staticmethod
     def DataFrame(Filename):
         """Return cleaned DataFrame from JSON or CSV file."""
         df = Data_Process.DataDict(Filename)
         return df
+
 
     @staticmethod
     def AnalyzeDataWithSQL(df):
@@ -88,6 +91,51 @@ class Data_Process:
         full_result = pd.merge(result, median_df, on="Year")
         return full_result
 
+
+    @staticmethod
+    def Datetime_To_Ordinal(df):
+        df["dato"] = pd.to_datetime(df["dato"])
+        df["dato_ordinal"] = df["dato"].map(pd.Timestamp.toordinal)
+        return df
+    
+
+    @staticmethod
+    def Linear_Regression(df, x_col, y_col, future_steps=0, n_points=100):
+
+        df = df.copy()
+
+        # Sjekk om x_col er dato
+        is_date = False
+        try:
+            df[x_col] = pd.to_datetime(df[x_col])
+            df["x_num"] = df[x_col].map(pd.Timestamp.toordinal)
+            is_date = True
+        except:
+            df["x_num"] = df[x_col]  # Behandler som tall
+
+        # Tren regresjonsmodell
+        X = df[["x_num"]]
+        y = df[y_col]
+        model = LinearRegression()
+        model.fit(X, y)
+
+        # Beregn prediksjonsområde
+        x_min = df["x_num"].min()
+        x_max = df["x_num"].max() + future_steps
+        x_pred_num = np.linspace(x_min, x_max, n_points).reshape(-1, 1)
+        y_pred = model.predict(x_pred_num)
+
+        # Tilbakekonverter dato hvis nødvendig
+        if is_date:
+            x_pred = [pd.to_datetime(pd.Timestamp.fromordinal(int(x))) for x in x_pred_num.flatten()]
+        else:
+            x_pred = x_pred_num.flatten()
+
+        return x_pred, y_pred, model
+
+
+
+
     @staticmethod
     def PlotData(df):
         """Plots the average of the data per year using a moving average."""
@@ -112,7 +160,7 @@ class Data_Process:
 
 
 if __name__ == "__main__":
-    filename = "Test_Data.csv" #Choose between JSON/CSV
+    filename = "rotte.json" #Choose between JSON/CSV
     df = Data_Process.DataFrame(filename)
     print(df)
 
@@ -124,3 +172,5 @@ if __name__ == "__main__":
         Data_Process.PlotData(df)
     else:
         print("No data available")
+
+

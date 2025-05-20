@@ -9,3 +9,6 @@ json
 os
 dotenv
 datetime
+pytest
+bokeh
+seaborn
