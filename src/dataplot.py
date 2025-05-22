@@ -44,41 +44,52 @@ class Data_Plot:
         plt.show()
 
     @staticmethod
-    def plot_bokeh(df, xlabel, ylabel, title, chart_type="line", output_filename="bokeh_plot.html"):
-        """Takes in a dataframe and chart type and returns a link with interactive graphs"""
+    def Plot_Regression(df, x_col, y_col, x_pred, y_pred, is_date=False):
+        """
+        Plot data points and linear regression line.
 
-        chart_type = chart_type.lower()
+        Parameters:
+        - df: original dataframe with data points
+        - x_col: name of x column in df
+        - y_col: name of y column in df
+        - x_pred: predicted x values from Linear_Regression
+        - y_pred: predicted y values from Linear_Regression
+        - is_date: bool, whether x values are dates
+        """
+        plt.figure(figsize=(10, 6))
 
-        # Sjekk at kolonner finnes i df
-        if xlabel not in df.columns:
-            raise ValueError(f"Missing x column: '{xlabel}'")
-        if ylabel not in df.columns:
-            raise ValueError(f"Missing y column: '{ylabel}'")
+        # Plot original data points
+        plt.scatter(df[x_col], df[y_col], color='blue', label='Data points')
 
-        output_file(output_filename)
-        source = ColumnDataSource(df)
+        # Plot regression line
+        plt.plot(x_pred, y_pred, color='red', label='Linear regression')
 
-        p = figure(
-            title=title,
-            x_axis_label=xlabel,
-            y_axis_label=ylabel,
-            width=700,
-            height=400,
-            tools="pan,wheel_zoom,box_zoom,reset,save",
-        )
+        plt.xlabel(x_col)
+        plt.ylabel(y_col)
+        plt.title(f'Linear Regression of {y_col} vs {x_col}')
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
 
-        if chart_type == "line":
-            p.line(x=xlabel, y=ylabel, source=source, line_width=2, legend_label=ylabel)
-            p.circle(x=xlabel, y=ylabel, source=source, size=6, color="navy", alpha=0.5)
-        elif chart_type == "scatter":
-            p.circle(x=xlabel, y=ylabel, source=source, size=8, color="green", alpha=0.6, legend_label=ylabel)
-        elif chart_type == "bar":
-            # Barplot requires x to be strings (categories)
-            df[xlabel] = df[xlabel].astype(str)
-            source = ColumnDataSource(df)
-            p.vbar(x=xlabel, top=ylabel, source=source, width=0.7, legend_label=ylabel)
-        else:
-            raise ValueError(f"Invalid chart_type: '{chart_type}'. Use 'line', 'scatter' or 'bar'.")
+    @staticmethod
+    def PlotData(df):
+        """Plots the average of the data per year using a moving average."""
+        result_df = Data_Process.AnalyzeDataWithSQL(df)
+        if result_df.empty:
+            print("No data to plot.")
+            return
 
-        p.legend.location = "top_left"
-        save(p)
+        result_df['Smoothed'] = result_df['AvgValue'].rolling(window=2).mean()
+
+        plt.figure(figsize=(10, 6))
+        plt.plot(result_df["Year"], result_df["AvgValue"], marker='o', label="Avg Value per Year")
+        plt.plot(result_df["Year"], result_df["Smoothed"], color="red", label="Smoothed (Moving Avg)")
+        plt.xlabel("Year")
+        plt.ylabel("Avg Value")
+        plt.title("Smoothed Average Value per Year with Moving Average")
+        plt.xticks(rotation=45)
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.show()
