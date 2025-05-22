@@ -6,14 +6,10 @@ import os
 
 
 
-def Main():
-    Data_type = input("What data do you want to visualize? (Air quality/Air temperature/Precipitation):")
+def Simple_Plot():
+    Data_type = input("What data do you want to visualize? (Air temperature/Precipitation):")
     xlabel = "Date"
-    if Data_type.lower() == "air quality":
-        filename = "Air_Quality.csv"
-        ylabel = "Value"
-        title = "Historic air quality (NO µg/m³)"
-    elif Data_type.lower() == "air temperature":
+    if Data_type.lower() == "air temperature":
         filename = "Air_Temp_Anomaly_1961-1990.json"
         ylabel = "Value"
         title = "Homogenized mean air temperature for the period 1961-1990 (degC)"
@@ -47,4 +43,4 @@ def Main():
         
 
 if __name__ == "__main__":
-    Main()
+    Simple_Plot()

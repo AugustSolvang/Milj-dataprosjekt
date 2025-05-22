@@ -32,18 +32,11 @@ class Data_Process:
 
         elif Filename.endswith(".csv"):
             try:
-                df = pd.read_csv(
-                    os.path.join('data', Filename),
-                    sep=";",
-                    encoding="utf-8",
-                    decimal=",",
-                    names=["Date", "Value", "Coverage"],
-                    na_values=[""],
-                )
-                df.columns = ["Date", "Value", "Coverage"]
+                df = pd.read_csv(os.path.join('data', Filename), sep=";", decimal=",", encoding="utf-8")
+                print(df.head())
+            
             except Exception as e:
-                print(f"Error reading CSV: {e}")
-                return pd.DataFrame()
+                print("Error reading CSV:", e)
 
             print("Column name set manually:", df.columns)
             df = df.dropna(subset=["Value", "Coverage"], how="all")
