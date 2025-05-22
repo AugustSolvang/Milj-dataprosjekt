@@ -7,142 +7,19 @@ import pandas as pd
 import numpy as np
 from pandasql import sqldf
 import json
-from Data_Process import Data_Process
 import os
-
-
-def DataDict(Filename):
-    """
-    Leser inn data fra .json eller .csv og returnerer et renset DataFrame
-    """
-    if Filename.endswith(".json"):
-        # Leser json-filer (forventet struktur fra Meteorologisk institutt eller lignende)
-        data_list = []
-        with open(Filename, "r") as readfile:
-            data = json.load(readfile)
-            for observation in data.get("data", []):
-                date = observation["referenceTime"][:10]
-                value = observation["observations"][0].get("value", None)
-                if value is not None:
-                    data_list.append((date, value))
-
-        # Konverterer til DataFrame og renser data
-        df = pd.DataFrame(data_list, columns=["Date", "Value"])
-        df["Date"] = pd.to_datetime(df["Date"])
-        df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
-        df = df.dropna(subset=["Date", "Value"])
-        df = df[df["Value"] >= 0]
-        return df
-
-    elif Filename.endswith(".csv"):
-        # Leser CSV-filer med typisk norsk format (semikolon-separert, desimal som komma)
-        try:
-            df = pd.read_csv(
-                Filename,
-                sep=";",
-                encoding="utf-8",
-                decimal=",",
-                names=["Date", "Value", "Coverage"],
-                na_values=[""],
-            )
-            df.columns = ["Date", "Value", "Coverage"]
-        except Exception as e:
-            print(f"Error reading CSV: {e}")
-            return pd.DataFrame()
-
-        df = df.dropna(subset=["Value", "Coverage"], how="all")
-        df["Date"] = pd.to_datetime(
-            df["Date"],
-            format="%d.%m.%Y %H:%M",
-            errors='coerce',
-            dayfirst=True
-        )
-        df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
-        df = df.dropna(subset=["Date", "Value"])
-        df = df[df["Value"] >= 0]
-        return df
-    else:
-        print("Not a supported file format.")
-        return pd.DataFrame()
-
-@staticmethod
-def AnalyzeDataWithSQL(df):
-    """
-    Beregner årlig statistikk (gjennomsnitt, min, maks, median) med SQL-spørring og Pandas
-    """
-    if df.empty:
-        print("No dataframe to be found")
-        return pd.DataFrame()
-
-    # SQL-spørring for å hente ut årsvis statistikk
-    query = """
-    SELECT strftime('%Y', Date) as Year, 
-    AVG(Value) as AvgValue,
-    MIN(Value) as MinValue,
-    MAX(Value) as MaxValue
-    FROM df
-    GROUP BY Year
-    ORDER BY Year
-    """
-    result = sqldf(query, locals())
-
-    # Legg til median manuelt med Pandas
-    df["Year"] = df["Date"].dt.year
-    median_df = df.groupby("Year")["Value"].median().reset_index(
-        name="MedianValue"
-    )
-
-    # Sammenflett statistikk
-    result["Year"] = result["Year"].astype(int)
-    median_df["Year"] = median_df["Year"].astype(int)
-    full_result = pd.merge(result, median_df, on="Year")
-
-    return full_result
-
-@staticmethod
-def Linear_Regression(df, x_col, y_col, future_steps=0, n_points=100):
-    """
-    Kjører lineær regresjon og returnerer prediksjonsverdier.
-    """
-    df = df.copy()
-
-    # Konverterer dato til numerisk format om nødvendig
-    if pd.api.types.is_datetime64_any_dtype(df[x_col]):
-        df["x_num"] = df[x_col].map(pd.Timestamp.toordinal)
-        is_date = True
-    else:
-        df["x_num"] = pd.to_numeric(df[x_col], errors='coerce')
-        is_date = False
-
-    # Fjern rader med manglende data
-    df = df.dropna(subset=["x_num", y_col])
-    X = df[["x_num"]]
-    y = df[y_col]
-
-    # Tren lineær modell
-    model = LinearRegression()
-    model.fit(X, y)
-
-    # Lag fremtidige datapunkter
-    x_min = df["x_num"].min()
-    x_max = df["x_num"].max() + future_steps
-    x_pred_num = np.linspace(x_min, x_max, n_points).reshape(-1, 1)
-    y_pred = model.predict(x_pred_num)
-
-    # Konverter tilbake til dato hvis opprinnelig input var dato
-    if is_date:
-        x_pred = [
-            pd.to_datetime(pd.Timestamp.fromordinal(int(x)))
-            for x in x_pred_num.flatten()
-        ]
-    else:
-        x_pred = x_pred_num.flatten()
-
-    return x_pred, y_pred, model, is_date
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from pandasql import sqldf
+import json
+import csv
+from Data_Process import Data_Process
 
 
 FILENAME = "Air_Quality.csv"  # <-- Put your file here
-df_raw = Data_Process.DataFrame(FILENAME)  # Reads and cleans data
+df_raw = Data_Process.DataFrame(os.path.join("data", FILENAME))  # Reads and cleans data
 
 # These are the widgets (User controls)
 stat_select = Select(
