@@ -177,7 +177,7 @@ class Data_Process:
 
 
 if __name__ == "__main__":
-    filename = "Test_Data.csv "  # Choose between JSON/CSV
+    filename = "Test_Data.csv"  # Choose between JSON/CSV
     df = Data_Process.DataFrame(filename)
     print(df)
 
