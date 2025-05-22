@@ -29,9 +29,6 @@ def Main():
         print(result)
 
     else:
-<<<<<<< HEAD
-        print("No data available")
-=======
         print("No data available")
 
     Plot_type = input("What type of visualization do you want? (Line/Bar/Scatter/Reg):")
@@ -49,4 +46,3 @@ def Main():
 
 if __name__ == "__main__":
     Main()
->>>>>>> aa66e52f9c6d9424a74e6d5c418a7fdc6a49cb31

@@ -10,7 +10,7 @@ import json
 
 # ------------------ DATAPROSESSERING ------------------
 
-class Interaktiv_Visualisering:
+class Interactive_Plot:
 
     @staticmethod
     def DataDict(Filename):
@@ -113,7 +113,7 @@ class Interaktiv_Visualisering:
 # ------------------ INITIALISERING ------------------
 
 FILENAME = "rotte.json"  # <-- Endre til din fil
-df_raw = Interaktiv_Visualisering.DataDict(FILENAME)
+df_raw = Interactive_Plot.DataDict(FILENAME)
 
 # Kontroll-elementer
 stat_select = Select(title="Statistikk", value="Avg", options=["Avg", "Min", "Max", "Median"])
@@ -132,7 +132,7 @@ prediction_plot = figure(title="Prediksjon", x_axis_label="År", y_axis_label="V
 # ------------------ FUNKSJONER ------------------
 
 def update_plot():
-    df_summary = Interaktiv_Visualisering.AnalyzeDataWithSQL(df_raw)
+    df_summary = Interactive_Plot.AnalyzeDataWithSQL(df_raw)
     y_field = stat_select.value + "Value"
     x = df_summary["Year"]
     y = df_summary[y_field]
@@ -147,7 +147,7 @@ def update_plot():
         plot.circle(x='x', y='y', source=source, size=8, color=color_picker.color)
 
 def run_regression():
-    df_summary = Interaktiv_Visualisering.AnalyzeDataWithSQL(df_raw)
+    df_summary = Interactive_Plot.AnalyzeDataWithSQL(df_raw)
     y_field = stat_select.value + "Value"
 
     if df_summary.empty or y_field not in df_summary:
@@ -156,7 +156,7 @@ def run_regression():
         prediction_plot.renderers = []
         return
 
-    x_pred, y_pred, _, _ = Interaktiv_Visualisering.Linear_Regression(
+    x_pred, y_pred, _, _ = Interactive_Plot.Linear_Regression(
         df_summary,
         "Year",
         y_field,
