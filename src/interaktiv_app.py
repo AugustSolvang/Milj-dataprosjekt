@@ -1,17 +1,19 @@
+from bokeh.io import curdoc
+from bokeh.layouts import column, row
+from bokeh.models import Select, ColorPicker, ColumnDataSource, Div, Button, Spinner
+from bokeh.plotting import figure
 from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from pandasql import sqldf
 import json
-import csv
 
+# ------------------ DATAPROSESSERING ------------------
 
 class Data_Process:
 
     @staticmethod
     def DataDict(Filename):
-        """Read JSON or CSV file and return a cleaned DataFrame."""
         if Filename.endswith(".json"):
             data_list = []
             with open(Filename, "r") as readfile:
@@ -44,27 +46,18 @@ class Data_Process:
                 print(f"Error reading CSV: {e}")
                 return pd.DataFrame()
 
-            print("Column name set manually:", df.columns)
             df = df.dropna(subset=["Value", "Coverage"], how="all")
             df["Date"] = pd.to_datetime(df["Date"], format="%d.%m.%Y %H:%M", errors='coerce', dayfirst=True)
             df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
             df = df.dropna(subset=["Date", "Value"])
             df = df[df["Value"] >= 0]
-            print("Cleaned data:", df.head())
             return df
         else:
             print("Not a supported file format.")
             return pd.DataFrame()
 
     @staticmethod
-    def DataFrame(Filename):
-        """Return cleaned DataFrame from JSON or CSV file."""
-        df = Data_Process.DataDict(Filename)
-        return df
-
-    @staticmethod
     def AnalyzeDataWithSQL(df):
-        """Analyze data using SQL (sqldf) on DataFrame."""
         if df.empty:
             print("No dataframe to be found")
             return pd.DataFrame()
@@ -92,8 +85,6 @@ class Data_Process:
     @staticmethod
     def Linear_Regression(df, x_col, y_col, future_steps=0, n_points=100):
         df = df.copy()
-
-        # Sjekk eksplisitt om x_col er datetime
         if pd.api.types.is_datetime64_any_dtype(df[x_col]):
             df["x_num"] = df[x_col].map(pd.Timestamp.toordinal)
             is_date = True
@@ -101,22 +92,17 @@ class Data_Process:
             df["x_num"] = pd.to_numeric(df[x_col], errors='coerce')
             is_date = False
 
-        # Fjern rader med manglende verdier
         df = df.dropna(subset=["x_num", y_col])
-
-        # Tren regresjonsmodell
         X = df[["x_num"]]
         y = df[y_col]
         model = LinearRegression()
         model.fit(X, y)
 
-        # Beregn prediksjonsområde
         x_min = df["x_num"].min()
         x_max = df["x_num"].max() + future_steps
         x_pred_num = np.linspace(x_min, x_max, n_points).reshape(-1, 1)
         y_pred = model.predict(x_pred_num)
 
-        # Tilbakekonverter x_pred hvis det opprinnelig var datoer
         if is_date:
             x_pred = [pd.to_datetime(pd.Timestamp.fromordinal(int(x))) for x in x_pred_num.flatten()]
         else:
@@ -124,73 +110,89 @@ class Data_Process:
 
         return x_pred, y_pred, model, is_date
 
-    @staticmethod
-    def Plot_Regression(df, x_col, y_col, x_pred, y_pred, is_date=False):
-        """
-        Plot data points and linear regression line.
+# ------------------ INITIALISERING ------------------
 
-        Parameters:
-        - df: original dataframe with data points
-        - x_col: name of x column in df
-        - y_col: name of y column in df
-        - x_pred: predicted x values from Linear_Regression
-        - y_pred: predicted y values from Linear_Regression
-        - is_date: bool, whether x values are dates
-        """
-        plt.figure(figsize=(10, 6))
+FILENAME = "rotte.json"  # <-- Endre til din fil
+df_raw = Data_Process.DataDict(FILENAME)
 
-        # Plot original data points
-        plt.scatter(df[x_col], df[y_col], color='blue', label='Data points')
+# Kontroll-elementer
+stat_select = Select(title="Statistikk", value="Avg", options=["Avg", "Min", "Max", "Median"])
+plot_type_select = Select(title="Plottype", value="Lineplot", options=["Lineplot", "Barplot", "Scatterplot"])
+color_picker = ColorPicker(title="Farge", color="#1f77b4")
+future_slider = Spinner(title="Fremtid (år):", low=0, high=50, step=1, value=5)
+regression_button = Button(label="Kjør regresjon", button_type="success")
+status_text = Div(text=f"Filen '{FILENAME}' er lastet inn.")
 
-        # Plot regression line
-        plt.plot(x_pred, y_pred, color='red', label='Linear regression')
+# Kilder og plott
+source = ColumnDataSource(data=dict(x=[], y=[]))
+regression_source = ColumnDataSource(data=dict(x=[], y=[]))
+plot = figure(title="Dataoversikt", x_axis_label="År", y_axis_label="Verdi")
+prediction_plot = figure(title="Prediksjon", x_axis_label="År", y_axis_label="Verdi")
 
-        plt.xlabel(x_col)
-        plt.ylabel(y_col)
-        plt.title(f'Linear Regression of {y_col} vs {x_col}')
-        plt.legend()
-        plt.grid(True)
-        plt.tight_layout()
-        plt.show()
+# ------------------ FUNKSJONER ------------------
 
-    @staticmethod
-    def PlotData(df):
-        """Plots the average of the data per year using a moving average."""
-        result_df = Data_Process.AnalyzeDataWithSQL(df)
-        if result_df.empty:
-            print("No data to plot.")
-            return
+def update_plot():
+    df_summary = Data_Process.AnalyzeDataWithSQL(df_raw)
+    y_field = stat_select.value + "Value"
+    x = df_summary["Year"]
+    y = df_summary[y_field]
+    source.data = dict(x=x, y=y)
 
-        result_df['Smoothed'] = result_df['AvgValue'].rolling(window=2).mean()
+    plot.renderers = []
+    if plot_type_select.value == "Lineplot":
+        plot.line(x='x', y='y', source=source, color=color_picker.color, line_width=2)
+    elif plot_type_select.value == "Barplot":
+        plot.vbar(x='x', top='y', source=source, width=0.7, color=color_picker.color)
+    elif plot_type_select.value == "Scatterplot":
+        plot.circle(x='x', y='y', source=source, size=8, color=color_picker.color)
 
-        plt.figure(figsize=(10, 6))
-        plt.plot(result_df["Year"], result_df["AvgValue"], marker='o', label="Avg Value per Year")
-        plt.plot(result_df["Year"], result_df["Smoothed"], color="red", label="Smoothed (Moving Avg)")
-        plt.xlabel("Year")
-        plt.ylabel("Avg Value")
-        plt.title("Smoothed Average Value per Year with Moving Average")
-        plt.xticks(rotation=45)
-        plt.legend()
-        plt.grid(True)
-        plt.tight_layout()
-        plt.show()
+def run_regression():
+    df_summary = Data_Process.AnalyzeDataWithSQL(df_raw)
+    y_field = stat_select.value + "Value"
 
+    if df_summary.empty or y_field not in df_summary:
+        status_text.text = "Ingen data tilgjengelig for regresjon."
+        regression_source.data = dict(x=[], y=[])
+        prediction_plot.renderers = []
+        return
 
-if __name__ == "__main__":
-    filename = "Test_Data.csv"  # Choose between JSON/CSV
-    df = Data_Process.DataFrame(filename)
-    print(df)
+    x_pred, y_pred, _, _ = Data_Process.Linear_Regression(
+        df_summary,
+        "Year",
+        y_field,
+        future_steps=future_slider.value
+    )
 
-    if not df.empty:
-        dp = Data_Process()
-        result = dp.AnalyzeDataWithSQL(df)
-        print(result)
+    regression_source.data = dict(x=x_pred, y=y_pred)
 
-        Data_Process.PlotData(df)
+    prediction_plot.renderers = []
+    prediction_plot.line(x='x', y='y', source=regression_source, line_width=2, line_color="firebrick")
+    status_text.text = f"Regresjon kjørt med {future_slider.value} år frem i tid."
 
-        # Eksempel på bruk av regresjon og plotting:
-        x_pred, y_pred, model, is_date = Data_Process.Linear_Regression(df, 'Date', 'Value', future_steps=3650, n_points=100)
-        Data_Process.Plot_Regression(df, 'Date', 'Value', x_pred, y_pred, is_date)
+# ------------------ CALLBACKS ------------------
 
-    else:
-        print("No data available")
+stat_select.on_change("value", lambda attr, old, new: update_plot())
+plot_type_select.on_change("value", lambda attr, old, new: update_plot())
+color_picker.on_change("color", lambda attr, old, new: update_plot())
+regression_button.on_click(run_regression)
+
+# ------------------ LAYOUT ------------------
+
+left_column = column(stat_select, plot_type_select, color_picker, plot)
+right_column = column(future_slider, regression_button, prediction_plot)
+
+layout = column(
+    row(left_column, right_column),
+    status_text
+)
+
+curdoc().add_root(layout)
+curdoc().title = "Interaktiv App m/ Regresjon"
+
+# Kjør update_plot() etter at Bokeh har initialisert komponentene
+def server_ready():
+    update_plot()
+
+curdoc().on_event('document_ready', lambda event: server_ready())
+
+#Kjør koden i terminal: bokeh serve src/interaktiv_app.py --show --port 5006
