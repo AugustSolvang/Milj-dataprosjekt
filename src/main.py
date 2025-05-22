@@ -86,4 +86,3 @@ if __name__ == "__main__":
         Data_Process.PlotData(df)
     else:
         print("No data available")
-    

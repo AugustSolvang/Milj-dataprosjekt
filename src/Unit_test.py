@@ -3,12 +3,13 @@ import pandas as pd
 import numpy as np
 import os
 from Data_Process import Data_Process
-from dataplot import Data_Plot
+from Data_Plot import Data_Plot
 import pytest
 import sys
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import webbrowser
+
 
 
 class TestDataProcess(unittest.TestCase):
@@ -22,6 +23,7 @@ class TestDataProcess(unittest.TestCase):
             "Value": [100, 150, 200]
         })
 
+# Tests if a valid JSON-file returns a non-empty DataFrame with correct columnname
     def test_valid_json_sreturns_dataframe(self):
         filename = self.valid_json_file
         df = Data_Process.DataDict(filename)
@@ -30,6 +32,7 @@ class TestDataProcess(unittest.TestCase):
         self.assertIn("Date", df.columns)
         self.assertIn("Value", df.columns)
 
+# Tests if a valid JSON-file returns a non-empty DataFrame with columnname including coverage
     def test_valid_csv_returns_dataframe(self):
         filename = self.valid_csv_file
         df = Data_Process.DataDict(filename)
@@ -39,6 +42,7 @@ class TestDataProcess(unittest.TestCase):
         self.assertIn("Value", df.columns)
         self.assertIn("Coverage", df.columns)
 
+# Tests if AnalyzeDataWithSQL returns correct structured columns 
     def test_analyze_data_with_valid_df(self):
         df = pd.DataFrame({
             "Date": pd.to_datetime(["2021-01-01", "2021-06-01", "2022-01-01"]),
@@ -51,16 +55,19 @@ class TestDataProcess(unittest.TestCase):
         self.assertIn("MaxValue", result.columns)
         self.assertIn("MedianValue", result.columns)
 
+# Tests if a non-valid filtype returns an empty DataFrame
     def test_invalid_filetype_returns_empty_dataframe(self):
         filename = self.invalid_file
         df = Data_Process.DataDict(filename)
         self.assertTrue(df.empty)
 
+# Tests if AnalyzeDataWithSQL returns an empty DataFrame if no data was introduced
     def test_empty_dataframe_analysis_returns_empty(self):
         df = pd.DataFrame()
         result = Data_Process.AnalyzeDataWithSQL(df)
         self.assertTrue(result.empty)
 
+# Tests if a JSON-file with wrong structure returns an empty DataFrame
     def test_json_missing_data_structure_returns_empty(self):
         broken_json_path = "broken.json"
         with open(broken_json_path, "w") as f:
@@ -69,6 +76,7 @@ class TestDataProcess(unittest.TestCase):
         self.assertTrue(df.empty)
         os.remove(broken_json_path)
 
+# Tests if a csv-file with invalid data gets correctly handled and cleaned
     def test_csv_with_invalid_data_returns_cleaned(self):
         broken_csv_path = "broken.csv"
         with open(broken_csv_path, "w") as f:
@@ -77,8 +85,9 @@ class TestDataProcess(unittest.TestCase):
         self.assertTrue(df.empty or df["Value"].isnull().all())
         os.remove(broken_csv_path)
 
-    # -------- Linear Regression tests --------
+# Below this line come the unittests for linear regression
 
+# Tests if linear regression works correctly with numeric x-data
     def test_linear_regression_with_numeric_x(self):
         df = pd.DataFrame({
             "x": np.arange(20),
@@ -93,7 +102,7 @@ class TestDataProcess(unittest.TestCase):
         self.assertAlmostEqual(y_pred[0], 1, places=1)
         self.assertFalse(is_date)
 
-        # Vis plot for regressjon
+       
         plt.figure()
         plt.scatter(df["x"], df["y"], label="Original data")
         plt.plot(x_pred, y_pred, color="red", label="Prediction")
@@ -102,6 +111,7 @@ class TestDataProcess(unittest.TestCase):
         plt.grid(True)
         plt.show()
 
+# Tests linear regression with date as x-axis and checks if output is timestamps
     def test_linear_regression_with_date_x(self):
         df = pd.DataFrame({
             "date": pd.date_range("2023-01-01", periods=10),
@@ -114,7 +124,6 @@ class TestDataProcess(unittest.TestCase):
         self.assertTrue(all(isinstance(x, pd.Timestamp) for x in x_pred))
         self.assertTrue(is_date)
 
-        # Vis plot for regressjon med dato
         plt.figure()
         plt.scatter(df["date"], df["y"], label="Original data")
         plt.plot(x_pred, y_pred, color="red", label="Prediction")
@@ -125,6 +134,7 @@ class TestDataProcess(unittest.TestCase):
         plt.grid(True)
         plt.show()
 
+# Tests if regression gives error if x-column 
     def test_linear_regression_missing_x_column(self):
         df = pd.DataFrame({
             "a": [1, 2, 3],
