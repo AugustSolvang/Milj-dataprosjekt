@@ -46,12 +46,18 @@ class Data_Process:
 
             print("Column name set manually:", df.columns)
             df = df.dropna(subset=["Value", "Coverage"], how="all")
-            df["Date"] = pd.to_datetime(df["Date"], format="%d.%m.%Y %H:%M", errors='coerce', dayfirst=True)
+            df["Date"] = pd.to_datetime(
+                df["Date"],
+                format="%d.%m.%Y %H:%M",
+                errors='coerce',
+                dayfirst=True
+            )
             df["Value"] = pd.to_numeric(df["Value"], errors="coerce")
             df = df.dropna(subset=["Date", "Value"])
             df = df[df["Value"] >= 0]
             print("Cleaned data:", df.head())
             return df
+
         else:
             print("Not a supported file format.")
             return pd.DataFrame()
@@ -91,9 +97,9 @@ class Data_Process:
 
     @staticmethod
     def Linear_Regression(df, x_col, y_col, future_steps=0, n_points=100):
+        """Apply linear regression on data and predict future values."""
         df = df.copy()
 
-        # Sjekk eksplisitt om x_col er datetime
         if pd.api.types.is_datetime64_any_dtype(df[x_col]):
             df["x_num"] = df[x_col].map(pd.Timestamp.toordinal)
             is_date = True
@@ -101,22 +107,18 @@ class Data_Process:
             df["x_num"] = pd.to_numeric(df[x_col], errors='coerce')
             is_date = False
 
-        # Fjern rader med manglende verdier
         df = df.dropna(subset=["x_num", y_col])
 
-        # Tren regresjonsmodell
         X = df[["x_num"]]
         y = df[y_col]
         model = LinearRegression()
         model.fit(X, y)
 
-        # Beregn prediksjonsområde
         x_min = df["x_num"].min()
         x_max = df["x_num"].max() + future_steps
         x_pred_num = np.linspace(x_min, x_max, n_points).reshape(-1, 1)
         y_pred = model.predict(x_pred_num)
 
-        # Tilbakekonverter x_pred hvis det opprinnelig var datoer
         if is_date:
             x_pred = [pd.to_datetime(pd.Timestamp.fromordinal(int(x))) for x in x_pred_num.flatten()]
         else:
@@ -188,9 +190,14 @@ if __name__ == "__main__":
 
         Data_Process.PlotData(df)
 
-        # Eksempel på bruk av regresjon og plotting:
-        x_pred, y_pred, model, is_date = Data_Process.Linear_Regression(df, 'Date', 'Value', future_steps=3650, n_points=100)
+        # Example of using regression and plotting:
+        x_pred, y_pred, model, is_date = Data_Process.Linear_Regression(
+            df,
+            'Date',
+            'Value',
+            future_steps=3650,
+            n_points=100
+        )
         Data_Process.Plot_Regression(df, 'Date', 'Value', x_pred, y_pred, is_date)
-
     else:
         print("No data available")
