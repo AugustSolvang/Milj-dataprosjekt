@@ -14,14 +14,16 @@ import webbrowser
 
 class TestDataProcess(unittest.TestCase):
     def setUp(self):
-        self.valid_csv_file = "Test_Data.csv"
-        self.valid_json_file = "rotte.json"
+        self.valid_csv_file = "Air_Quality.csv"
+        self.valid_json_file = "Air_Temp_Anomaly_1961-1990.json"
         self.invalid_file = "invalid.txt"
 
         self.df = pd.DataFrame({
             "Year": [2020, 2021, 2022],
             "Value": [100, 150, 200]
         })
+
+# Below this line are unit tests for data proessing presented
 
 # Tests if a valid JSON-file returns a non-empty DataFrame with correct columnname
     def test_valid_json_sreturns_dataframe(self):
@@ -85,7 +87,7 @@ class TestDataProcess(unittest.TestCase):
         self.assertTrue(df.empty or df["Value"].isnull().all())
         os.remove(broken_csv_path)
 
-# Below this line come the unittests for linear regression
+# Below this line are unit tests for linear regression presented
 
 # Tests if linear regression works correctly with numeric x-data
     def test_linear_regression_with_numeric_x(self):
@@ -134,7 +136,7 @@ class TestDataProcess(unittest.TestCase):
         plt.grid(True)
         plt.show()
 
-# Tests if regression gives error if x-column 
+# Tests if regression gives error if x-column is not found in DataFrame
     def test_linear_regression_missing_x_column(self):
         df = pd.DataFrame({
             "a": [1, 2, 3],
@@ -143,6 +145,7 @@ class TestDataProcess(unittest.TestCase):
         with self.assertRaises(KeyError):
             Data_Process.Linear_Regression(df, "x", "y")
 
+# Tests if regression gives error if y-column is not found in DataFame
     def test_linear_regression_missing_y_column(self):
         df = pd.DataFrame({
             "x": [1, 2, 3],
@@ -151,6 +154,7 @@ class TestDataProcess(unittest.TestCase):
         with self.assertRaises(KeyError):
             Data_Process.Linear_Regression(df, "x", "y")
 
+# Tests if regression gives error if y-values are non-numeric
     def test_linear_regression_non_numeric_y(self):
         df = pd.DataFrame({
             "x": [1, 2, 3],
@@ -159,7 +163,9 @@ class TestDataProcess(unittest.TestCase):
         with self.assertRaises(ValueError):
             Data_Process.Linear_Regression(df, "x", "y")
 
+# Below this line are unit tests for bokeh-plotting presented
 
+# Tests if a line-plot HTML-file is created and opened in the webbrowser 
 def test_plot_bokeh_lineplot_creates_file(tmp_path):
     df = pd.DataFrame({'x': [1, 2, 3], 'y': [10, 20, 30]})
     output_file = tmp_path / "lineplot.html"
@@ -168,6 +174,7 @@ def test_plot_bokeh_lineplot_creates_file(tmp_path):
     webbrowser.open(str(output_file))
 
 
+# Tests if a scatterplot HTML-file is created and opened in the webbrowser
 def test_plot_bokeh_scatterplot_creates_file(tmp_path):
     df = pd.DataFrame({'x': [4, 5, 6], 'y': [15, 25, 35]})
     output_file = tmp_path / "scatterplot.html"
@@ -176,6 +183,7 @@ def test_plot_bokeh_scatterplot_creates_file(tmp_path):
     webbrowser.open(str(output_file))
 
 
+# Tests if a barplot HTML-file is created and x-values are converted to strings
 def test_plot_bokeh_barplot_converts_x_to_str_and_creates_file(tmp_path):
     df = pd.DataFrame({'cat': [100, 200, 300], 'val': [1, 2, 3]})
     output_file = tmp_path / "barplot.html"
@@ -184,11 +192,7 @@ def test_plot_bokeh_barplot_converts_x_to_str_and_creates_file(tmp_path):
     assert df['cat'].dtype == object  # Barplot skal konvertere til string
     webbrowser.open(str(output_file))
 
-
-# ---------------------------
-# Negative tester for Data_Plot.plot_bokeh
-# ---------------------------
-
+# Tests 
 def test_plot_bokeh_invalid_chart_type_raises_valueerror():
     df = pd.DataFrame({'x': [1, 2], 'y': [3, 4]})
     with pytest.raises(ValueError) as excinfo:
