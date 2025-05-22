@@ -112,7 +112,7 @@ class Interactive_Plot:
 
 # ------------------ INITIALISERING ------------------
 
-FILENAME = "rotte.json"  # <-- Endre til din fil
+FILENAME = "Air_Temp_Anomaly_1961-1990.json"  # <-- Endre til din fil
 df_raw = Interactive_Plot.DataDict(FILENAME)
 
 # Kontroll-elementer

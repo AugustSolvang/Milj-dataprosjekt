@@ -5,6 +5,7 @@ import numpy as np
 from pandasql import sqldf
 import json
 import csv
+import os
 
 
 class Data_Process:
@@ -14,7 +15,7 @@ class Data_Process:
         """Read JSON or CSV file and return a cleaned DataFrame."""
         if Filename.endswith(".json"):
             data_list = []
-            with open(Filename, "r") as readfile:
+            with open(os.path.join('data', Filename), "r") as readfile:
                 data = json.load(readfile)
                 for observation in data.get("data", []):
                     date = observation["referenceTime"][:10]
@@ -32,7 +33,7 @@ class Data_Process:
         elif Filename.endswith(".csv"):
             try:
                 df = pd.read_csv(
-                    Filename,
+                    os.path.join('data', Filename),
                     sep=";",
                     encoding="utf-8",
                     decimal=",",
