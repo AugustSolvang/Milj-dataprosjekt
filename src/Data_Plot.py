@@ -10,7 +10,7 @@ class Data_Plot:
     @staticmethod
     def plot_lineplot(df, xlabel, ylabel, title):
         sns.lineplot(data=df, x=xlabel, y=ylabel)  # plots a line chart
-        plt.title(title)
+        plt.title(title) 
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
         plt.legend()
