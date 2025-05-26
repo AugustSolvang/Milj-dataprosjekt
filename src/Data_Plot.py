@@ -13,7 +13,7 @@ class Data_Plot:
         plt.title(title) 
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
-        plt.legend()
+        plt.legend() 
         plt.show()
 
     @staticmethod
