@@ -43,4 +43,13 @@ def Simple_Plot():
         
 
 if __name__ == "__main__":
-    Simple_Plot()
+    Interactive = input("Do you want a interactive plot? (Yes/No):")
+    if Interactive.lower() == "yes":
+        print("Change 'FILENAME' in 'Interactive_Plot.py' to the desired data type and save")
+        print("Type this 'bokeh serve src/Interactive_Plot.py --show --port 5006' in the PowerShell Terminal")
+        print("For each time you run the code in the terminal you need to change the '5006'")
+    elif Interactive.lower() == "no":
+        Simple_Plot()
+    else:
+        print("The wrong input was given.")
+
