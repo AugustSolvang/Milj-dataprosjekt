@@ -1,0 +1,1 @@
+Her ligger refleksjonsnotatet og et bilde av den interaktive visualiseringen, sammen med ki deklarasjon og tasks som ligger i hver sin mappe
