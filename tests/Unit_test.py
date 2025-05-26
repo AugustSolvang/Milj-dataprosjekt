@@ -5,7 +5,6 @@ import os
 from Data_Process import Data_Process
 from Data_Plot import Data_Plot
 import pytest
-import sys
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import webbrowser

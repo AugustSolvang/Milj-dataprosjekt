@@ -1,12 +1,9 @@
-from bokeh.plotting import figure, output_file, save
-from bokeh.models import ColumnDataSource
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 
 # various functions for plotting graphs
 class Data_Plot:
-
     @staticmethod
     def plot_lineplot(df, xlabel, ylabel, title):
         sns.lineplot(data=df, x=xlabel, y=ylabel)  # plots a line chart
@@ -19,15 +16,6 @@ class Data_Plot:
     @staticmethod
     def plot_scatterplot(df, xlabel, ylabel, title):
         sns.scatterplot(data=df, x=xlabel, y=ylabel)  # plots a scatter chart
-        plt.title(title)
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.legend()
-        plt.show()
-
-    @staticmethod
-    def plot_regplot(df, xlabel, ylabel, title):
-        sns.regplot(data=df, x=xlabel, y=ylabel)  # plots scatter with regression line
         plt.title(title)
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)

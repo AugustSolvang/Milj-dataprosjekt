@@ -15,17 +15,17 @@ df_raw = Data_Process.DataFrame(os.path.join("data", FILENAME))  # Reads and cle
 stat_select = Select(
     title="Statistic",
     value="Avg",
-    options=["Avg", "Min", "Max", "Median"]
+    options=["Avg", "Min", "Max", "Median"] # Pick your data of choice
 )
 plot_type_select = Select(
     title="Plottype",
     value="Lineplot",
-    options=["Lineplot", "Barplot", "Scatterplot"]
+    options=["Lineplot", "Barplot", "Scatterplot"] # Pick your plot of choice
 )
-color_picker = ColorPicker(title="color", color="#1f77b4")
-future_slider = Spinner(title="Future (year):", low=0, high=50, step=1, value=5)
-regression_button = Button(label="Run regression", button_type="success")
-status_text = Div(text=f"File '{FILENAME}' has been successfully loaded.")
+color_picker = ColorPicker(title="color", color="#1f77b4") # Pick your color of choice
+future_slider = Spinner(title="Future (year):", low=0, high=50, step=1, value=5) #
+regression_button = Button(label="Run regression", button_type="success") # Button to run regression
+status_text = Div(text=f"File '{FILENAME}' has been successfully loaded.") # Confirmation on bottom of the page
 
 # There are for the sources and plot
 source = ColumnDataSource(data=dict(x=[], y=[]))              # Dataset for main plot
@@ -106,7 +106,7 @@ layout = column(
 
 # Adds the layout for the Bokeh-document
 curdoc().add_root(layout)
-curdoc().title = "Interaktiv App m/ Regresjon"
+curdoc().title = "Interactive App w/ Regression"
 
 
 # Run first update after the server is ready
