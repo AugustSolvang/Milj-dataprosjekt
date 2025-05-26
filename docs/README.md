@@ -1,1 +1,1 @@
-Her ligger refleksjonsnotatet og et bilde av den interaktive visualiseringen, sammen med ki deklarasjon og tasks som ligger i hver sin mappe
+Under docs ligger informativ dokumentasjon, blant annet et bilde av den interaktive visualiseringen, refleksjonsnotatet og en fil ved navnet "ThoughtProcess" som forklarer tankegangen vår gjennom prosjektet.
