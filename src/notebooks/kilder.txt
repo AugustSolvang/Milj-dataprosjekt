@@ -1,2 +1,0 @@
-https://www.instructables.com/Get-Weather-Data-Using-Python-and-Openweather-API/
-https://openweathermap.org/current#name
