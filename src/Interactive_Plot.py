@@ -2,17 +2,7 @@ from bokeh.io import curdoc
 from bokeh.layouts import column, row
 from bokeh.models import Select, ColorPicker, ColumnDataSource, Div, Button, Spinner
 from bokeh.plotting import figure
-from sklearn.linear_model import LinearRegression
-import pandas as pd
-import numpy as np
-from pandasql import sqldf
-import json
 import os
-from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-from pandasql import sqldf
 import json
 import csv
 from Data_Process import Data_Process
@@ -23,7 +13,7 @@ df_raw = Data_Process.DataFrame(os.path.join("data", FILENAME))  # Reads and cle
 
 # These are the widgets (User controls)
 stat_select = Select(
-    title="Statistikk",
+    title="Statistic",
     value="Avg",
     options=["Avg", "Min", "Max", "Median"]
 )
@@ -32,17 +22,17 @@ plot_type_select = Select(
     value="Lineplot",
     options=["Lineplot", "Barplot", "Scatterplot"]
 )
-color_picker = ColorPicker(title="Farge", color="#1f77b4")
-future_slider = Spinner(title="Fremtid (år):", low=0, high=50, step=1, value=5)
-regression_button = Button(label="Kjør regresjon", button_type="success")
-status_text = Div(text=f"Filen '{FILENAME}' er lastet inn.")
+color_picker = ColorPicker(title="color", color="#1f77b4")
+future_slider = Spinner(title="Future (year):", low=0, high=50, step=1, value=5)
+regression_button = Button(label="Run regression", button_type="success")
+status_text = Div(text=f"File '{FILENAME}' has been successfully loaded.")
 
 # There are for the sources and plot
-source = ColumnDataSource(data=dict(x=[], y=[]))               # Dataset for main plot
+source = ColumnDataSource(data=dict(x=[], y=[]))              # Dataset for main plot
 regression_source = ColumnDataSource(data=dict(x=[], y=[]))   # Dataset for prediction plot
 
-plot = figure(title="Dataoversikt", x_axis_label="År", y_axis_label="Verdi")
-prediction_plot = figure(title="Prediksjon", x_axis_label="År", y_axis_label="Verdi")
+plot = figure(title="Data", x_axis_label="year", y_axis_label="Value")
+prediction_plot = figure(title="Prediction", x_axis_label="year", y_axis_label="Value")
 
 
 def update_plot():
@@ -78,7 +68,7 @@ def run_regression():
     y_field = stat_select.value + "Value"
 
     if df_summary.empty or y_field not in df_summary:
-        status_text.text = "Ingen data tilgjengelig for regresjon."
+        status_text.text = "No data available for regression."
         regression_source.data = dict(x=[], y=[])
         prediction_plot.renderers = []
         return
@@ -96,7 +86,7 @@ def run_regression():
     prediction_plot.renderers = []
     prediction_plot.line(x='x', y='y', source=regression_source,
                          line_width=2, line_color="firebrick")
-    status_text.text = f"Regresjon kjørt med {future_slider.value} år frem i tid."
+    status_text.text = f"Regression ran with {future_slider.value} years in the future."
 
 
 # Associates the update functions with interactive elements

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import os
 from Data_Process import Data_Process
-from dataplot import Data_Plot
+from Data_Plot import Data_Plot
 import pytest
 import sys
 from sklearn.linear_model import LinearRegression
