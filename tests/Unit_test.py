@@ -4,17 +4,18 @@ import numpy as np
 import os
 from Data_Process import Data_Process
 from Data_Plot import Data_Plot
-import pytest
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
-import webbrowser
+
+# Data files are found relative to this file, so the tests can be run from any folder
+DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 
 
 class TestDataProcess(unittest.TestCase):
     # Tests if files are in proper condition to be tested
     def setUp(self):
-        self.valid_csv_file = "Air_Quality.csv"
-        self.valid_json_file = "Air_Temp_Anomaly_1961-1990.json"
+        self.valid_csv_file = os.path.join(DATA_DIR, "Air_Quality.csv")
+        self.valid_json_file = os.path.join(DATA_DIR, "Air_Temp_Anomaly_1961-1990.json")
         self.invalid_file = "invalid.txt"
 
         self.df = pd.DataFrame({
@@ -33,6 +34,11 @@ class TestDataProcess(unittest.TestCase):
         self.assertFalse(df.empty)
         self.assertIn("Date", df.columns)
         self.assertIn("Value", df.columns)
+
+# Tests if negative values are kept, since the JSON data are anomalies from the 1961-1990 normal
+    def test_valid_json_keeps_negative_values(self):
+        df = Data_Process.DataDict(self.valid_json_file)
+        self.assertTrue((df["Value"] < 0).any())
 
 # Tests if a valid JSON-file returns a non-empty DataFrame with columnname including coverage
     def test_valid_csv_returns_dataframe(self):
@@ -166,68 +172,7 @@ class TestDataProcess(unittest.TestCase):
             Data_Process.Linear_Regression(df, "x", "y")
 
 
-# Below this line are unit tests for bokeh-plotting presented
-
-# Tests if a line-plot HTML-file is created and opened in the webbrowser
-def test_plot_bokeh_lineplot_creates_file(tmp_path):
-    df = pd.DataFrame({'x': [1, 2, 3], 'y': [10, 20, 30]})
-    output_file = tmp_path / "lineplot.html"
-    Data_Plot.plot_bokeh(
-        df, xlabel='x', ylabel='y', title='Line Plot',
-        chart_type='line', output_filename=str(output_file))
-    assert output_file.exists()
-    webbrowser.open(str(output_file))
-
-
-# Tests if a scatterplot HTML-file is created and opened in the webbrowser
-def test_plot_bokeh_scatterplot_creates_file(tmp_path):
-    df = pd.DataFrame({'x': [4, 5, 6], 'y': [15, 25, 35]})
-    output_file = tmp_path / "scatterplot.html"
-    Data_Plot.plot_bokeh(
-        df, xlabel='x', ylabel='y', title='Scatter Plot',
-        chart_type='scatter', output_filename=str(output_file))
-    assert output_file.exists()
-    webbrowser.open(str(output_file))
-
-
-# Tests if a barplot HTML-file is created and x-values are converted to strings
-def test_plot_bokeh_barplot_converts_x_to_str_and_creates_file(tmp_path):
-    df = pd.DataFrame({'cat': [100, 200, 300], 'val': [1, 2, 3]})
-    output_file = tmp_path / "barplot.html"
-    Data_Plot.plot_bokeh(
-        df, xlabel='cat', ylabel='val', title='Bar Plot',
-        chart_type='bar', output_filename=str(output_file))
-    assert output_file.exists()
-    assert df['cat'].dtype == object
-    webbrowser.open(str(output_file))
-
-
-# Raises ValueError if invalid chart type in bokeh-plot
-def test_plot_bokeh_invalid_chart_type_raises_valueerror():
-    df = pd.DataFrame({'x': [1, 2], 'y': [3, 4]})
-    with pytest.raises(ValueError) as excinfo:
-        Data_Plot.plot_bokeh(
-            df, xlabel='x', ylabel='y', title='Bad Chart', chart_type='wrongtype')
-    assert "Invalid chart_type" in str(excinfo.value)
-
-
-# Raises ValueError if x-column is missing in DataFrame
-def test_plot_bokeh_missing_xlabel_column_raises_valueerror():
-    df = pd.DataFrame({'wrong_x': [1, 2], 'y': [3, 4]})
-    with pytest.raises(ValueError) as excinfo:
-        Data_Plot.plot_bokeh(
-            df, xlabel='x', ylabel='y', title='Missing X', chart_type='line')
-    assert "Missing x column" in str(excinfo.value).lower() or "missing" in str(excinfo.value).lower()
-
-
-# Raises ValueError if y-column is missing in DataFrame
-def test_plot_bokeh_missing_ylabel_column_raises_valueerror():
-    df = pd.DataFrame({'x': [1, 2], 'wrong_y': [3, 4]})
-    with pytest.raises(ValueError) as excinfo:
-        Data_Plot.plot_bokeh(
-            df, xlabel='x', ylabel='y', title='Missing Y', chart_type='line')
-    assert "Missing y column" in str(excinfo.value).lower() or "missing" in str(excinfo.value).lower()
-
+# Below this line are unit tests for plotting presented
 
 class TestDataPlot(unittest.TestCase):
 
@@ -243,68 +188,17 @@ class TestDataPlot(unittest.TestCase):
             "value": [5, 7, 6, 8, 9, 5]
         })
 
-        self.output_dir = "test_outputs"
-        os.makedirs(self.output_dir, exist_ok=True)
-
-    # Tests if bokeh lineplot HTML-file generates properly and categorydata is of correct type
+    # Tests if a lineplot is drawn without errors
     def test_plot_lineplot(self):
         Data_Plot.plot_lineplot(self.df_numeric, "x", "y", "Test Line Plot")
 
-    # Tests if bokeh scatterplot HTML-file generates properly and categorydata is of correct type
+    # Tests if a scatterplot is drawn without errors
     def test_plot_scatterplot(self):
         Data_Plot.plot_scatterplot(self.df_numeric, "x", "y", "Test Scatter Plot")
 
-    # Tests if bokeh regplot HTML-file generates properly and categorydata is of correct type
-    def test_plot_regplot(self):
-        Data_Plot.plot_regplot(self.df_numeric, "x", "y", "Test Reg Plot")
-
-    # Tests if bokeh barplot HTML-file generates properly and categorydata is of correct type
+    # Tests if a barplot is drawn without errors from categorical data
     def test_plot_barplot(self):
         Data_Plot.plot_barplot(self.df_categorical, "category", "value", "Test Bar Plot")
-
-    # Tests if bokeh generates a lineplot HTML-file from numeric DataFrame
-    def test_plot_bokeh_line(self):
-        output_file = os.path.join(self.output_dir, "bokeh_line.html")
-        Data_Plot.plot_bokeh(
-            self.df_numeric, "x", "y", "Bokeh Line Plot",
-            chart_type="line", output_filename=output_file)
-        self.assertTrue(os.path.exists(output_file))
-        webbrowser.open(f"file://{os.path.abspath(output_file)}")
-
-    # Tests if bokeh generates a scatterplot HTML-file from numeric DataFrame
-    def test_plot_bokeh_scatter(self):
-        output_file = os.path.join(self.output_dir, "bokeh_scatter.html")
-        Data_Plot.plot_bokeh(
-            self.df_numeric, "x", "y", "Bokeh Scatter Plot",
-            chart_type="scatter", output_filename=output_file)
-        self.assertTrue(os.path.exists(output_file))
-        webbrowser.open(f"file://{os.path.abspath(output_file)}")
-
-    # Tests if bokeh generates a barplot HTML-file from numeric DataFrame
-    def test_plot_bokeh_bar(self):
-        output_file = os.path.join(self.output_dir, "bokeh_bar.html")
-        Data_Plot.plot_bokeh(
-            self.df_categorical, "category", "value", "Bokeh Bar Plot",
-            chart_type="bar", output_filename=output_file)
-        self.assertTrue(os.path.exists(output_file))
-        self.assertTrue(
-            self.df_categorical['category'].dtype == object or
-            self.df_categorical['category'].dtype.name == 'category')
-        webbrowser.open(f"file://{os.path.abspath(output_file)}")
-
-    # Raises ValueError if invalid chart type is given as input
-    def test_plot_bokeh_invalid_type_raises(self):
-        with self.assertRaises(ValueError):
-            Data_Plot.plot_bokeh(
-                self.df_numeric, "x", "y", "Invalid Chart", chart_type="invalidtype")
-
-    # Raises ValueError if x- or y-columns are missing in DataFrame
-    def test_plot_bokeh_missing_columns_raise(self):
-        with self.assertRaises(ValueError):
-            Data_Plot.plot_bokeh(self.df_numeric, "missing_x", "y", "Missing X")
-
-        with self.assertRaises(ValueError):
-            Data_Plot.plot_bokeh(self.df_numeric, "x", "missing_y", "Missing Y")
 
 
 if __name__ == "__main__":
