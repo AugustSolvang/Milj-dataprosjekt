@@ -22,7 +22,8 @@ def Simple_Plot():
         title = "Homogenized mean precipitation sum for the period 1961-1990 (percent)"
     else:
         print("The wrong data type was written.")
-    
+        return
+
     # Read and clean the data using the custom Data_Process class
     df = Data_Process.DataFrame(filename)
     print(df)  # Print raw data for debugging

@@ -17,8 +17,8 @@ def fetch_data(Filename, Api_Key, Url, Sources, Elements, Reference_Time):
     # If the request is successful (HTTP 200 OK)
     if res.status_code == 200:
         data = res.json()  # Parse the JSON response
-        with open(Filename, "a") as f:
-            json.dump(data, f, indent = 4)  # Append the data to the file in JSON format
+        with open(Filename, "w") as f:
+            json.dump(data, f, indent = 4)  # Write the data to the file in JSON format
         print(Endpoint)  # Print the URL used (for debugging or reference)
     else:
         # If the request fails, print the error status
@@ -29,7 +29,7 @@ def fetch_data(Filename, Api_Key, Url, Sources, Elements, Reference_Time):
 load_dotenv()
 
 # Set variables used for the API request
-Filename = "Precipitation_Sum_Anomaly_1961-1990.json"
+Filename = os.path.join("data", "Precipitation_Sum_Anomaly_1961-1990.json")
 Api_Key = os.getenv("API_Key_MET")  # Fetch API key from environment
 Url = os.getenv("Base_MET_URL")     # Fetch base URL from environment
 Sources = "SN18700"                 # MET station ID
