@@ -146,7 +146,7 @@ class Data_Process:
         x_min = df["x_num"].min() # Defines the min x-values
         x_max = df["x_num"].max() + future_steps # Defines the max x-values
         x_pred_num = np.linspace(x_min, x_max, n_points).reshape(-1, 1) # Makes new x-values for the prediction
-        y_pred = model.predict(x_pred_num) # Predicts the y-values 
+        y_pred = model.predict(pd.DataFrame(x_pred_num, columns=["x_num"])) # Predicts the y-values
 
         # Convert predicted x back to datetime if original was dates
         if is_date:

@@ -56,8 +56,8 @@ def update_plot():
         plot.vbar(x='x', top='y', source=source,
                   width=0.7, color=color_picker.color)
     elif plot_type_select.value == "Scatterplot":
-        plot.circle(x='x', y='y', source=source,
-                    size=8, color=color_picker.color)
+        plot.scatter(x='x', y='y', source=source,
+                     size=8, color=color_picker.color)
 
 
 def run_regression():
