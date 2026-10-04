@@ -39,8 +39,8 @@ Ferdig nedlastede data ligger i `data/`, så du trenger ikke API-nøkkel for å 
 
 - **Statiske plott:** `python src/main.py` (svar «No» på spørsmålet om interaktivt plott)
 - **Interaktivt dashboard:** `bokeh serve src/Interactive_Plot.py --show --port 5006`. Velg datasett med `FILENAME` øverst i [src/Interactive_Plot.py](src/Interactive_Plot.py).
-- **Hente data på nytt fra Frost:** kopier `.env.example` til `.env`, fyll inn din egen klient-ID fra [frost.met.no](https://frost.met.no) og kjør `python src/Json_Dump_MET.py`.
-- **Enhetstester:** kjøres fra `data/`-mappen med `src/` på `PYTHONPATH`, for eksempel `cd data` og så `PYTHONPATH=../src pytest ../tests/Unit_test.py`.
+- **Hente data på nytt fra Frost:** kopier `.env.example` til `.env` og fyll inn `API_Key_MET` (klient-ID fra [frost.met.no](https://frost.met.no)) og `Base_MET_URL=https://frost.met.no/observations/v0.jsonld`. Kjør så `python src/Json_Dump_MET.py`, som lagrer nedbørsdataene i `data/`. For temperaturdataene endrer du `Filename` og `Elements` i skriptet (elementet er `best_estimate_mean(air_temperature_anomaly P1M 1961_1990)`).
+- **Enhetstester:** `pytest` fra rotmappen.
 
 ---
 
