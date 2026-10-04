@@ -31,7 +31,7 @@ class Data_Process:
             df["Date"] = pd.to_datetime(df["Date"])  # Convert to datetime
             df["Value"] = pd.to_numeric(df["Value"], errors="coerce")  # Ensure numeric values
             df = df.dropna(subset=["Date", "Value"])  # Drop rows with missing values
-            df = df[df["Value"] >= 0]  # Keep only non-negative values
+            # Negative values are kept: the data are anomalies from the 1961-1990 normal
             return df
 
         # This part handles the csv file
